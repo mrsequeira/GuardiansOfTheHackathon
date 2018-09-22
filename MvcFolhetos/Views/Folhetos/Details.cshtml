@@ -1,0 +1,93 @@
+﻿@model MvcFolhetos.Models.Folhetos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+
+
+    <p>@Html.DisplayFor(model => model.Titulo)</p>
+    <p>@Html.DisplayFor(model => model.Descricao)</p>
+    <p> De @Html.DisplayFor(model => model.DataInic) a @Html.DisplayFor(model => model.DataFim)</p>
+    @for (var i = 1; i < @ViewBag.nPaginas + 1; i++)
+    {
+        <img srcset="@Url.Content("~/imagens/folheto" + ViewBag.id +"/pagina" + @i + ".jpeg")" width="100" height="147" />
+    }
+
+</div>
+<div>
+    <h4>Folhetos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Files)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Files)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataFim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataFim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeEmpresa)
+        </dd>
+    </dl>
+
+    <div class="form-group">
+        <span class="control-label col-md-2">Tags associados ao folheto</span>
+        <div class="col-md-10">
+            @{ string selected = "";}
+            @foreach (var item in ViewBag.ListaDeTags)
+            {
+                selected = "";
+                foreach (int opcaoID in Model.ListaDeTags.Select(b => b.ID))
+                {
+                    if (item.ID == opcaoID) { selected = "checked"; }
+                }
+                <input type="checkbox" name="opcoesEscolhidasDeTags" value="@item.ID" @selected disabled /> @item.Info
+                <br />
+            }
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FolhetosID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
