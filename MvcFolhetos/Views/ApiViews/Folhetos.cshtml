@@ -1,0 +1,106 @@
+﻿@* View para Integrar o controlo Api/FolhetosController.cs *@
+
+@{
+    ViewBag.Title = "Listagem e adição de Agentes via AJAX + JSON + Web API";
+}
+
+<h2>Listagem e adição de Agentes via AJAX + JSON + Web API</h2>
+
+
+<div class="container">
+    @*
+        Container da grelha de agentes.
+        Irá conter os divs com informação sobre agentes.
+    *@
+    <div class="row" id="grelha-agentes"></div>
+
+    <hr />
+    <form id="adicionar-agente">
+        @* Campo do nome *@
+        <div class="form-group">
+            @*
+            O <label> é o elemento que se deve usar quando se
+            querem fazer labels para <input>s ou <select>s.
+
+            O atributo "for" é usado como ponteiro para o elemento
+            com o ID respetivo, e melhora a acessibilidade do site,
+            porque torna os campos mais perceptíveis para utilizadores
+            com leitores de ecrã, e clicar nas labels ativa os campos
+            respetivos (sem necessidade de links)
+            *@
+            <label for="titulo" class="control-label">Titulo</label>
+            <input required class="form-control" type="text" name="titulo" id="titulo" />
+        </div>
+
+        @*   FolhetosID = db.GetIdFolheto(),
+        Titulo = model.Titulo, -> nome
+        Descricao = model.Descricao, -> esquadra *@
+
+        <div class="form-group">
+            <label for="descricao" class="control-label"> Descricao </label>
+            <input required class="form-control" type="text" name="descricao" id="descricao" />
+        </div>
+        <div class="form-group">
+            <label for="descricao" class="control-label"> Descricao </label>
+            <input required class="form-control" type="date" name="descricao" id="descricao" />
+        </div>
+
+        @*<div class="form-group">
+
+            <label for="datainic" class="control-label"> Data de inicio </label>
+            <div class='input-group date' id='datetimepicker1'>
+
+                <input required class="form-control" type='date' name="datainic" id="datainic" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+
+            </div>
+        </div>*@
+        <div class='input-group date' id='datetimepicker1'>
+            <label for="datafim" class="control-label"> Data final </label>
+            <input required class="form-control" type='date' name="datafim" id="datafim" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="nomeempresa" class="control-label"> Nome da Loja </label>
+            <input required class="form-control" type="text" name="nomeempresa" id="nomeempresa" />
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Adicionar folheto</button>
+    </form>
+</div>
+
+@section scripts {
+    @*
+        Container para "templates". Adiciono a classe "hidden" do Bootstrap (3)
+        para que os conteúdos não sejam visíveis para o utilizador.
+    *@
+    <div class="hidden">
+        <div id="template-folheto" class="col-sm-3">
+            <a href="#" class="thumbnail">
+                @* Imagem do folheto. *@
+                <img class="img-responsive" />
+
+                <div class="caption">
+                    @* Nome do agente. *@
+                    <h3></h3>
+
+                    @* Data *@
+                    <p></p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/apidata.js"</script>
+
+
+
+}
+
+

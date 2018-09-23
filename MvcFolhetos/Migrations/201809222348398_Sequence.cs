@@ -5,7 +5,7 @@ namespace MvcFolhetos.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public partial class Sequencefolhetos : DbMigration
+    public partial class Sequence : DbMigration
     {
         // Adicionar uma sequência para obter IDs dos folhetos de forma
         // atómica.

@@ -1,233 +1,219 @@
-﻿@model IEnumerable<MvcFolhetos.Models.Folhetos>
+﻿@* View para Integrar o controlo Api/FolhetosController.cs *@
 
 @{
-    ViewBag.Title = "Lista de folhetos";
+    ViewBag.Title = "Listagem e adição de Agentes via AJAX + JSON + Web API";
 }
-<style>
-    figure.snip1253 {
-        font-family: 'Karla';
-        color: #fff;
-        position: relative;
-        float: left;
-        overflow: hidden;
-        margin: 10px 1%;
-        min-width: 250px;
-        max-width: 310px;
-        width: 100%;
-        background-color: #ffffff;
-        color: #000000;
-        text-align: left;
-        font-size: 16px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-    }
 
-        figure.snip1253 * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-        }
-
-        figure.snip1253 .image {
-            max-height: 300px;
-            overflow: hidden;
-        }
-
-        figure.snip1253 img {
-            max-width: 100%;
-            vertical-align: top;
-            position: relative;
-        }
-
-        figure.snip1253 figcaption {
-            margin: -40px 15px 0;
-            padding: 15px;
-            position: relative;
-            background-color: #ffffff;
-        }
-
-        figure.snip1253 .date {
-            background-color: #2980b9;
-            top: 15px;
-            color: #fff;
-            left: 15px;
-            min-height: 48px;
-            min-width: 48px;
-            position: absolute;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-            figure.snip1253 .date span {
-                display: block;
-                line-height: 24px;
-            }
-
-        figure.snip1253 h3 {
-            margin: 0;
-            padding: 0;
-        }
-
-        figure.snip1253 h3 {
-            min-height: 50px;
-            margin-bottom: 10px;
-            margin-left: 10px;
-            display: inline-block;
-            font-weight: 600;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        figure.snip1253 footer {
-            padding: 0 25px;
-            background-color: #20638f;
-            color: #e6e6e6;
-            font-size: 0.8em;
-            line-height: 30px;
-            text-align: center;
-        }
-
-            figure.snip1253 footer > div {
-                display: inline-block;
-                margin-left: 10px;
-            }
-
-            figure.snip1253 footer i {
-                color: rgba(255, 255, 255, 0.2);
-                margin-right: 0px;
-            }
-
-        figure.snip1253 a {
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            position: absolute;
-            z-index: 1;
-        }
-
-        figure.snip1253:hover img,
-        figure.snip1253.hover img {
-            -webkit-transform: scale(1.15);
-            transform: scale(1.15);
-        }
-</style>
+<h2>Listagem e adição de Agentes via AJAX + JSON + Web API</h2>
 
 
-<h2> Lista de folhetos </h2>
+<div class="container">
+    @*
+        Container da grelha de agentes.
+        Irá conter os divs com informação sobre agentes.
+    *@
+    <div class="row" id="grelha-folhetos"></div>
 
-<p>
-    @if (this.User.IsInRole("GestaoDeFolhetos"))
-    {
-        @Html.ActionLink("Criar novo folheto", "Create")
+    <hr />
+    <form id="adicionar-folheto">
+        @* Campo do nome *@
+        <div class="form-group">
+            @*
+                O <label> é o elemento que se deve usar quando se
+                querem fazer labels para <input>s ou <select>s.
 
-    }
+                O atributo "for" é usado como ponteiro para o elemento
+                com o ID respetivo, e melhora a acessibilidade do site,
+                porque torna os campos mais perceptíveis para utilizadores
+                com leitores de ecrã, e clicar nas labels ativa os campos
+                respetivos (sem necessidade de links)
+            *@
+            <label for="titulo" class="control-label">Titulo</label>
+            <input required class="form-control" type="text" name="titulo" id="titulo" />
+        </div>
 
-    @using (Html.BeginForm())
-    {
-<p>
-        Pesquisar por empresa: @Html.TextBox("SearchString")
-        <input type="submit" value="Pesquisar" />
-    </p>
-}
-    </p>
-    <div class="container">
-        @foreach (var item in Model)
-        {
-            <figure class="snip1253">
+        <div class="form-group">
+            <label for="descricao" class="control-label"> Descricao </label>
+            <input required class="form-control" type="text" name="descricao" id="descricao" />
+        </div>
+        <label> Upload das páginas do folheto</label>
+        <div class="form-group">
+            <input type="file"
+                   name="files"
+                   style="color:blue;"
+                   accept=".jpeg" multiple />
+        </div>
 
-                <p> @Html.DisplayFor(modelItem => item.NomeEmpresa)</p>
-                <div class="image">
-                    <img src="~/imagens/folheto@(item.FolhetosID)/pagina1.jpeg" alt="sample52" />
+        <div class="form-group">
+            <label for="datainic" class="control-label"> Data de inicio </label>
+            <input required class="form-control" type='date' name="datainic" id="datainic" />
+        </div>
+
+        <div class="form-group">
+            <label for="datafim" class="control-label"> Data de inicio </label>
+            <input required class="form-control" type='date' name="datafim" id="datafim" />
+        </div>
+
+        <div class="form-group">
+            <label for="nomeempresa" class="control-label"> Nome da Loja </label>
+            <input required class="form-control" type="text" name="nomeempresa" id="nomeempresa" />
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Adicionar folheto</button>
+    </form>
+</div>
+
+@section scripts {
+    @*
+        Container para "templates". Adiciono a classe "hidden" do Bootstrap (3)
+        para que os conteúdos não sejam visíveis para o utilizador.
+    *@
+    <div class="hidden">
+        <div id="template-folheto" class="col-sm-3">
+            <a href="#" class="thumbnail">
+                @* Imagem do folheto. *@
+                <img class="img-responsive" />
+
+                <div class="caption">
+                    @* Nome do agente. *@
+                    <h3></h3>
+
+                    @* Data *@
+                    <p></p>
                 </div>
-                <figcaption>
-                    <h3>@Html.DisplayFor(modelItem => item.Titulo) </h3>
-                </figcaption>
-                <footer>
-                    <div class="views">
-                        <i class="fas fa-calendar-alt"></i>
-                        @Html.DisplayFor(modelItem => item.DataInic)
-                        a
-                        @Html.DisplayFor(modelItem => item.DataFim)
-                    </div>
-                </footer><a> @Html.ActionLink(" ", "Details", new { id = item.FolhetosID })</a>
-            </figure>
-        }
-
+            </a>
+        </div>
     </div>
 
-    @if (this.User.IsInRole("GestaoDeFolhetos"))
-    {
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Titulo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Descricao)
-                </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.Files)
-                </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.DataInic)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DataFim)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NomeEmpresa)
-                </th>
-                <th></th>
-            </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Titulo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        <a href="~/imagens/folheto@(item.FolhetosID)/" target="_blank">
-                            <img src="~/imagens/folheto@(item.FolhetosID)/pagina1.jpeg" width="100" height="147" />
-                        </a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataInic)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataFim)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeEmpresa)
-                    </td>
-                    @*<td>
-                            <div class="col-md-10">
-                                @{ string selected = "";}
-                                @foreach (var etiquetas in ViewBag.ListaDeTags)
 
-                                {
-                                    selected = "";
-                                    foreach (int opcaoID in item.ListaDeTags.Select(b => b.ID))
-                                    {
-                                        if (etiquetas.ID == opcaoID) { selected = "checked"; }
-                                    }
-                                    <input type="checkbox" name="opcoesEscolhidasDeTags" value="@etiquetas.ID" @selected /> @etiquetas.Info
-                                    <br />
-                                }
-                            </div>
-                        </td>*@
-                    <td>
-                        @Html.ActionLink("Create", "Create", new { id = item.FolhetosID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.FolhetosID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.FolhetosID })
-                    </td>
-                </tr>
-            }
-        </table>
-    }
+    <script>
+        ///////////////////////////////////////////////////////
+        // Leitura de dados
+        ///////////////////////////////////////////////////////
+
+        function getFolhetos() {
+            return fetch("/api/folhetos", {
+                header: { 'Accept': 'application/json' }
+            })
+                .then(resposta => resposta.json());
+        }
+
+        ///////////////////////////////////////////////////////
+        // Mostrar dados no ecrã
+        ///////////////////////////////////////////////////////
+
+        function divFolheto(folheto) {
+            /**
+            * Crio uma cópia do elemento HTML com ID "template-agente"
+            * com a função "cloneNode". O "true" no "cloneNode" é para indicar
+            * que quero também copiar os elementos filho.
+            */
+            let template = document.querySelector('#template-folheto').cloneNode(true);
+            template.removeAttribute('id');
+            // A partir do template, obter o <img />
+            let fotoFolheto = template.querySelector('img');
+            //colocar try catch aqui, caso nao haja imagem nao colocar nada
+            fotoFolheto.src = "/imagens/folheto" + folheto.FolhetosID + "/pagina1.jpeg";
+
+            // fotoFolheto.classList.add('hidden');
+
+
+            // Defino o nome e a esquadra no template...
+            template.querySelector('.caption > h3').textContent = folheto.Titulo;
+            //template.querySelector('.caption > p').textContent = `De ${folheto.DataInic} a ${folheto.DataFim} `;
+
+            return template;
+        }
+        //    /**
+        //    * Cria o <div /> de um Folheto, e adiciona-o à grelha
+        //    * de folhetos
+        //    **/
+        function adicionarFolheto(folheto) {
+            let template = divFolheto(folheto);
+
+            let grelha = document.querySelector('#grelha-folhetos');
+
+            grelha.appendChild(template);
+        }
+
+        ///////////////////////////////////////////////////////
+        // Formulário para adicionar um agente,
+        // e mostrar o agente criado.
+        ///////////////////////////////////////////////////////
+
+        // Adicionar evento para submissão...
+        document.querySelector('#adicionar-folheto').addEventListener('submit', function (e) {
+            // Prevenir que o browser submeta o formulário por nós...
+            e.preventDefault();
+
+            // O this é o formulário submetido (<form id="adicionar-agente"></form>)
+            let form = this;
+
+            // Criar o objeto do Agente,
+            // com os campos do Nome e da Esquadra,
+            // através dos valores dos campos no formulário.
+            let folheto = {
+                Titulo: form.querySelector('[name=titulo]').value,
+                Descricao: form.querySelector('[name=descricao]').value,
+                DataInic: form.querySelector('[name=datainic]').value,
+                DataFim: form.querySelector('[name=datafim]').value,
+                NomeEmpresa: form.querySelector('[name=nomeempresa]').value
+            };
+
+            // Converter em JSON.
+            let jsonData = JSON.stringify(folheto);
+
+            // Usar o fetch para enviar o JSON, como POST (quero CRIAR, logo POST)
+            fetch('/api/folhetos', { // Ver  Api/AgentesController, método PostAgentes
+                method: 'post', // Quero usar POST
+                headers: { 'Content-Type': 'application/json' }, // Vou enviar JSON
+                body: jsonData // Dados a enviar.
+            })
+                .then(resposta => { // Resposta da criação
+                    if (resposta.ok) { // "ok" indica se 200 <= status < 300.
+                        return resposta.json(); // JSON do Agente criado.
+                    } else {
+                        // Erro (vai parar ao catch abaixo)
+                        return resposta.json()
+                            .then(erro => Promise.reject(erro));
+                    }
+                })
+                // Agente criado. "novoAgente" é o objeto do Agente.
+                // vamos adicionar o novo agente ao ecrã.
+                .then(novoFolheto => adicionarFolheto(novoFolheto))
+                // Ocorreu um erro.
+                .catch(erro => {
+                    // Ver o que se passou...
+                    // TPC: Mostrar o erro ao utilizador (ver objeto 'erro', estão lá os erros)
+                    console.error(erro);
+                });
+        });
+
+
+
+        ///////////////////////////////////////////////////////
+        // Arranque
+        ///////////////////////////////////////////////////////
+
+        /**
+         * Inicia o ecrã dos folhetos.
+         */
+        function iniciarFolhetos() {
+            getFolhetos()
+                .then(folhetos => {
+                    let grelha = document.querySelector('#grelha-folhetos');
+
+                    for (let folheto of folhetos) {
+                        console.log(folheto);
+                        adicionarFolheto(folheto);
+                    }
+                })
+        }
+
+        iniciarFolhetos();
+    </script>
+}
+
+

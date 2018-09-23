@@ -23,7 +23,7 @@ namespace IdentitySample.Models
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
             IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<FolhetosDbConnectionString>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -76,7 +76,7 @@ namespace IdentitySample.Models
 
         public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
         {
-            return new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
+            return new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<FolhetosDbConnectionString>()));
         }
     }
 
@@ -101,68 +101,37 @@ namespace IdentitySample.Models
     // This is useful if you do not want to tear down the database each time you run the application.
     // public class ApplicationDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     // This example shows you how to create a new database if the Model changes
-    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<FolhetosDbConnectionString>
     {
-        protected override void Seed(ApplicationDbContext context) {
+        protected override void Seed(FolhetosDbConnectionString context) {
             InitializeIdentityForEF(context);
             base.Seed(context);
         }
 
 
         //Create User=Admin@Admin.com with password=Admin@123456 in the Admin role        
-        public static void InitializeIdentityForEF(ApplicationDbContext db) {
-            var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        public static void InitializeIdentityForEF(FolhetosDbConnectionString db) {
+             var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            const string name = "gestor@example.com";
-            const string password = "gestor@123456";
+            const string name = "admin@example.com";
+            const string password = "Admin@123456";
             const string roleName = "GestaoDeFolhetos";
-
-            //Create Role Admin if it does not exist
+             //Create Role Admin if it does not exist
             var role = roleManager.FindByName(roleName);
             if (role == null) {
                 role = new IdentityRole(roleName);
                 var roleresult = roleManager.Create(role);
             }
-
-            var user = userManager.FindByName(name);
+             var user = userManager.FindByName(name);
             if (user == null) {
                 user = new ApplicationUser { UserName = name, Email = name };
                 var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }
-
-            // Add user admin to Role Admin if not already added
+             // Add user admin to Role Admin if not already added
             var rolesForUser = userManager.GetRoles(user.Id);
             if (!rolesForUser.Contains(role.Name)) {
                 var result = userManager.AddToRole(user.Id, role.Name);
-            }
-
-
-            const string nome = "admin@example.com";
-            const string pass = "Admin@123456";
-            const string adminrole = "Admin";
-
-            //Create Role Admin if it does not exist
-            var roles = roleManager.FindByName(adminrole);
-            if (roles == null)
-            {
-                roles = new IdentityRole(adminrole);
-                var roleresult = roleManager.Create(roles);
-            }
-
-            var users = userManager.FindByName(nome);
-            if (users == null)
-            {
-                users = new ApplicationUser { UserName = nome, Email = nome };
-                var result = userManager.Create(users, pass);
-                result = userManager.SetLockoutEnabled(users.Id, false);
-            }
-
-            // Add user admin to Role Admin if not already added
-            var rolesForUsers = userManager.GetRoles(users.Id);
-            if (!rolesForUsers.Contains(roles.Name))
-            {
-                var result = userManager.AddToRole(users.Id, roles.Name);
             }
         }
 

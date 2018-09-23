@@ -23,15 +23,20 @@ namespace MvcFolhetos.Controllers
         [AllowAnonymous]
         public ActionResult Index(string searchString)
         {
-            //LINQ query
-            var folhetos = from m in db.Folhetos
-                         select m;
-            //Caso a searchbox tiver algo é filtrado o conteudo a mostrar
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                folhetos = folhetos.Where(s => s.NomeEmpresa.Contains(searchString));
-            }
 
+
+            //Caso a searchbox tiver algo é filtrado o conteudo a mostrar
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    folhetos = db.Folhetos.Where(s => s.NomeEmpresa.Contains(searchString));
+            //    return View(folhetos);
+            //}
+
+            //LINQ query
+            var folhetos = db.Folhetos.OrderBy(a => a.DataInic).ToList();
+            //from m in db.Folhetos select m;
+            
+    
             return View(folhetos);
 
 

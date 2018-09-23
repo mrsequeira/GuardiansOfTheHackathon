@@ -12,9 +12,9 @@ namespace WebAPI
             // Desligar o formatador do XML.
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
-            // Impedir referências circulares no JSON.
-            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling =
-                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            // Pretty-print do JSON
+            config.Formatters.JsonFormatter.SerializerSettings.Formatting =
+                Newtonsoft.Json.Formatting.Indented;
 
             // Attribute routing toma prioriade sobre conventions-based routing (abaixo).
             config.MapHttpAttributeRoutes();
