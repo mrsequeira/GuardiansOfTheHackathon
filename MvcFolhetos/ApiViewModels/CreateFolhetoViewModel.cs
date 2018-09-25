@@ -22,9 +22,6 @@ namespace WebAPI.ApiViewModels
 
         public string Descricao { get; set; }
 
-        //[FileExtensions(FileTypes = new string[] { "image/png", "image/jpeg", "image/jpg", "image/gif" })]
-        //public IEnumerable<HttpPostedFileBase> Files { get; set; }
-
         [Display(Name = "Data de Inicio")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

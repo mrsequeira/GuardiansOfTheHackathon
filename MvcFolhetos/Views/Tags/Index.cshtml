@@ -1,33 +1,50 @@
 ﻿@model IEnumerable<MvcFolhetos.Models.Tags>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listagem e adição de tags";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Info)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Info)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+@{
+    ViewBag.Title = "Listagem e adição de tags via AJAX + JSON + Web API";
 }
 
-</table>
+<h2>Listagem e adição de tags via AJAX + JSON + Web API</h2>
+
+
+<div class="container">
+    @*
+        Container da grelha de agentes.
+        Irá conter os divs com informação sobre agentes.
+    *@
+    <div class="row" id="grelha-tags"></div>
+
+    <hr />
+    <form id="adicionar-tags">
+        @* Campo do nome *@
+
+        <div class="form-group">
+            <label for="info" class="control-label"> Descricao </label>
+            <input required class="form-control" type="text" name="info" id="info" />
+        </div>
+
+
+        <button class="btn btn-primary" type="submit">Adicionar tag</button>
+    </form>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/js/tags/app.js")
+    @Scripts.Render("~/Scripts/js/tags/apidata.js")
+    @*
+        Container para "templates". Adiciono a classe "hidden" do Bootstrap (3)
+        para que os conteúdos não sejam visíveis para o utilizador.
+    *@
+    <div class="hidden invisible">
+        <div id="template-tag" class="col-sm-3">
+            <ul class="list-group">
+            </ul>
+  
+        </div>
+    </div>
+}

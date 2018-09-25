@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MvcFolhetos.Models;
+using Newtonsoft.Json;
 using WebAPI.ApiViewModels;
 
 namespace WebAPI.Api
@@ -23,7 +24,7 @@ namespace WebAPI.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         #endregion
-
+            
         #region CRUD: "Read" de folhetos
 
         // GET: /api/folhetos
@@ -48,26 +49,23 @@ namespace WebAPI.Api
             return Ok(resultado);
         }
 
-        //********************************* RESOLVER PROBLEMA REFERENCES **
         // GET: api/Folhetos/5
         [ResponseType(typeof(Folhetos))]
         public IHttpActionResult GetFolhetos(int id)
         {
             IQueryable<Folhetos> query = db.Folhetos;
 
-            //Folhetos folhetos = db.Folhetos.Find(id);
+            Folhetos folhetos = db.Folhetos.Find(id);
 
-            // Nota: Cuidado que aqui também pode ocorrer o problema das referências
-            // circulares! Fica como exercício para casa...
-            // Não precisam do Select aqui (Linq é só para listas),
-            // por isso seria algo como
-
-            //var resultado = query.Equals( Folhetos.FolhetosID, id)
-                
-            
-            //var resultado = new { query => query.FolhetosID == id };
-            var resultado = query
-                .Where( folheto=> folheto.FolhetosID == id );
+            var resultado = new
+            {
+                folhetos.FolhetosID,
+                folhetos.Titulo,
+                folhetos.Descricao,
+                folhetos.DataInic,
+                folhetos.DataFim,
+                folhetos.NomeEmpresa,
+            };
 
             if (resultado == null)
             {
@@ -99,7 +97,32 @@ namespace WebAPI.Api
 
             return Ok(resultado);
         }
-        
+
+        [HttpGet, Route("{id}/Paginas")]
+        public IHttpActionResult GetFolhetosPaginas(int id)
+        {
+            Folhetos folhetos = db.Folhetos.Find(id);
+
+            if (folhetos == null)
+            {
+                return NotFound();
+            }
+            var path = "C:\\Users\\AlexandredosSantosSe\\dev\\WebAPI\\MvcFolhetos\\imagens\\folheto" + id;
+            //var path = "~/imagens/folheto" + id ;
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
+            int count = dir.GetFiles().Length;
+            //http://www.newtonsoft.com/json/help/html/SerializingJSON.htm
+            //temporario(testing apenas, colocar em json.stringfy something like that)
+            //string json = "{'npaginas': '" + count + "'}";
+
+            //ObjetoJson product = new ObjetoJson();
+            //product.paginas = count;
+            //JsonConvert.SerializeObject(product);
+            //string json = JsonConvert.SerializeObject(new { "Paginas" = count });
+     
+            return Ok(count);
+        }
+     
         #endregion
 
 

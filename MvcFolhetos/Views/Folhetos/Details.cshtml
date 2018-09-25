@@ -17,58 +17,11 @@
     }
 
 </div>
-<div>
-    <h4>Folhetos</h4>
+<div class="container">
+    <h4>Folheto</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
+    <div class="row" id="grelha-folhetos"></div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Files)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Files)
-        </dd>*@
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataInic)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataInic)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataFim)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataFim)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeEmpresa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NomeEmpresa)
-        </dd>
-    </dl>
 
     <div class="form-group">
         <span class="control-label col-md-2">Tags associados ao folheto</span>
@@ -91,3 +44,38 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.FolhetosID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+@section scripts {
+    @*
+        Container para "templates". Adiciono a classe "hidden" do Bootstrap (3)
+        para que os conteúdos não sejam visíveis para o utilizador.
+    *@
+    <div class="hidden">
+        <div id="template-folheto" class="col-sm-3">
+            <a href="#" class="thumbnail">
+                @* Imagem do folheto. *@
+                <img class="img-responsive" />
+
+                <div class="caption">
+                    @* Nome do agente. *@
+                    <h3></h3>
+
+                    @* Data *@
+                    <p></p>
+
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-erase" aria-hidden="true"> </span>
+                    </button>
+
+
+                </div>
+
+
+            </a>
+
+        </div>
+    </div>
+}
+
+
