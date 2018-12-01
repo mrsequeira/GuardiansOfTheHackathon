@@ -20,54 +20,38 @@ Vagrant.configure("2") do |config|
     vb.memory = "1024"
     vb.cpus = 1
   end
-
+  # Change sudo to existing privilege escalation
   config.vm.provision "shell", inline: <<-SHELL
     export HOME=/home/vagrant
 
-    # No need to install postgres because is already installed on this machine
-    # Create db postgres
-    sudo -u postgres createuser -s vagrant
-    # sudo -u postgres psql
+    # Experimentar mudar para become inves de sudo!!!!!
+    # echo '############ Installing ansible... ############ '
+    # sudo apt-get update
+    # sudo apt-get -y install software-properties-common # -y to auto answer question
+    # sudo apt-add-repository --yes --update ppa:ansible/ansible
+    # sudo apt-get -y install ansible
     
-
-    # install graphviz for ER diagrams
+    cd /vagrant
+    echo '############ Installing all dependencies coming from Gemfile... ############ '
+    bundle install
+    
+    echo '############ Installing graphviz to draw our diagram ER... ############ '
+    ############ Installing graphviz for ER diagrams... ############ '
     sudo apt-get install -yq graphviz libgraphviz-dev graphviz-dev pkg-config
   SHELL
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # NOTE: This will enable public access to the opened port
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
 
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine and only allow access
-  # via 127.0.0.1 to disable public access
-  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network "public_network"
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
-
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", path: "inst_db.sh"
+ 
+  # config.vm.define 'hackatum' do |node|
+  #   config.vm.hostname = 'hackatum.local'
+  #     config.vm.provision "ansible_local" do |ansible|
+  #       ansible.verbose = "v"
+  #       # ansible.limit = "all,localhost"
+  #       ansible.playbook = "playbook.yml"
+  #       # ansible.host_key_checking = false
+  #       # ansible.extra_vars = { ansible_ssh_user: 'vagrant' }
+  #       # ansible.sudo = true
+  #     end
+  #   end
+  # end
 end
