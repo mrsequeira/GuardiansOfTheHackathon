@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_12_06_230252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "participants", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password"
+    t.boolean "vegan"
+    t.string "tshirt_size"
+    t.string "motor_difficulties"
+    t.string "allergies"
+    t.boolean "caption"
+    t.string "phone"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_participants_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "project"
+    t.string "description"
+    t.datetime "edition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "participants", "teams"
 end
