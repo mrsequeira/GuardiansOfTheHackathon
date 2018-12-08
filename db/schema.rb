@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_230252) do
+ActiveRecord::Schema.define(version: 2018_12_07_213031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mentors", force: :cascade do |t|
+    t.string "name_mentor"
+    t.string "email_mentor"
+    t.string "password_mentor"
+    t.boolean "vegan"
+    t.string "tshirt_size"
+    t.string "mentor_difficulties"
+    t.string "mentor_allergies"
+  end
 
   create_table "participants", force: :cascade do |t|
     t.string "name"
@@ -40,5 +50,13 @@ ActiveRecord::Schema.define(version: 2018_12_06_230252) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "themes", force: :cascade do |t|
+    t.string "name_theme"
+    t.string "description_theme"
+    t.bigint "mentors_id"
+    t.index ["mentors_id"], name: "index_themes_on_mentors_id"
+  end
+
   add_foreign_key "participants", "teams"
+  add_foreign_key "themes", "mentors", column: "mentors_id"
 end

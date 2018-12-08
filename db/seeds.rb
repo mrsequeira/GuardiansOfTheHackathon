@@ -6,7 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Team.delete_all
+Mentors.delete_all
+Mentors.create(:id=>1,:name_mentor=>'José',:email_mentor=>'jose@mail.pt',:password_mentor=>'1234',:vegan=> true,:tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> 'Asma')
+Mentors.create(:id=>2,:name_mentor=>'Manuel',:email_mentor=>'manuel@mail.pt',:password_mentor=>'1234',:vegan=> true,:tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '')
+Mentors.create(:id=>3,:name_mentor=>'Paulo',:email_mentor=>'paulo@mail.pt',:password_mentor=>'1234',:vegan=> true, :tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '')
+Mentors.create(:id=>4,:name_mentor=>'Carlos',:email_mentor=>'carlos@mail.pt',:password_mentor=>'1234',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '')
+puts "Success: Mentors data loaded"
+Themes.delete_all
+Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo',:mentors_id=>1)
+Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient',:mentors_id=>2)
+Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade',:mentors_id=>4)
+puts "Success: Themes data loaded"    
 
 Team.create(:id=>1, :name=>'soviemoscomer', :project=>'GuiaTomar',:description=>'Uma aplicação móvel que serve como guia para um turista em Tomar',:edition => DateTime.strptime("09/01/2009 17:00", "%m/%d/%Y %H:%M")) 
 
@@ -18,8 +28,6 @@ Team.create(:id=>4, :name=>'gaymerstetris', :project=>'forumTomar',:description=
 
 puts "Success: Team data loaded"
 
-
-Participant.delete_all
 
 #participants team 1
 Participant.create(:id=>1,
