@@ -14,10 +14,11 @@ Mentors.create(:id=>4,:name_mentor=>'Carlos',:email_mentor=>'carlos@mail.pt',:pa
 puts "Success: Mentors data loaded"
 Themes.delete_all
 Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo',:mentors_id=>1)
-Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient',:mentors_id=>2)
-Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade',:mentors_id=>4)
+Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient',:id_mentor=>2)
+Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade',:id_mentor=>4)
 puts "Success: Themes data loaded"    
 
+Team.delete_all
 Team.create(:id=>1, :name=>'soviemoscomer', :project=>'GuiaTomar',:description=>'Uma aplicação móvel que serve como guia para um turista em Tomar',:edition => DateTime.strptime("09/01/2009 17:00", "%m/%d/%Y %H:%M")) 
 
 Team.create(:id=>2, :name=>'hackaros', :project=>'FunerariaNoPulso',:description=>'Uma pulseira que lê o batimento cardiaco do idoso, e quando este falecer, liga para a funerária',:edition => DateTime.strptime("09/01/2009 17:00", "%m/%d/%Y %H:%M")) 
@@ -28,7 +29,7 @@ Team.create(:id=>4, :name=>'gaymerstetris', :project=>'forumTomar',:description=
 
 puts "Success: Team data loaded"
 
-
+Participant.delete_all
 #participants team 1
 Participant.create(:id=>1,
     :name=>'João Miguel', 
