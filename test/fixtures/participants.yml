@@ -2,24 +2,24 @@
 
 one:
   name: MyString
-  email: MyString
-  password: MyString
   vegan: false
   tshirt_size: MyString
   motor_difficulties: MyString
   allergies: MyString
-  caption: false
+  leader: false
   phone: MyString
+  course: MyString
+  user: one
   team: one
 
 two:
   name: MyString
-  email: MyString
-  password: MyString
   vegan: false
   tshirt_size: MyString
   motor_difficulties: MyString
   allergies: MyString
-  caption: false
+  leader: false
   phone: MyString
+  course: MyString
+  user: two
   team: two

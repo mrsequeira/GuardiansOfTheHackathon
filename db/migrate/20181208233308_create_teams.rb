@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :project
       t.string :description
-      t.datetime :edition
+      t.string :photo
 
       t.timestamps
     end
