@@ -4,6 +4,7 @@ class DropProductsTable < ActiveRecord::Migration[5.2]
     drop_table :teams
     drop_table :mentors
     drop_table :themes
+    drop_table :team_themes
   end
 
   def down

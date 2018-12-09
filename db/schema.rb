@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_213031) do
+ActiveRecord::Schema.define(version: 2018_12_09_114712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2018_12_07_213031) do
     t.index ["team_id"], name: "index_participants_on_team_id"
   end
 
+  create_table "team_themes", force: :cascade do |t|
+    t.bigint "teams_id"
+    t.bigint "themes_id"
+    t.index ["teams_id"], name: "index_team_themes_on_teams_id"
+    t.index ["themes_id"], name: "index_team_themes_on_themes_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "project"
@@ -58,5 +65,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_213031) do
   end
 
   add_foreign_key "participants", "teams"
+  add_foreign_key "team_themes", "teams", column: "teams_id"
+  add_foreign_key "team_themes", "themes", column: "themes_id"
   add_foreign_key "themes", "mentors", column: "mentors_id"
 end

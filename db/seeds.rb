@@ -14,8 +14,8 @@ Mentors.create(:id=>4,:name_mentor=>'Carlos',:email_mentor=>'carlos@mail.pt',:pa
 puts "Success: Mentors data loaded"
 Themes.delete_all
 Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo',:mentors_id=>1)
-Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient',:id_mentor=>2)
-Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade',:id_mentor=>4)
+Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient',:mentors_id=>2)
+Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade',:mentors_id=>4)
 puts "Success: Themes data loaded"    
 
 Team.delete_all
@@ -195,10 +195,12 @@ Participant.create(:id=>13,
     :phone=>'910587939',
     :team_id=>4)
 
-    
-    
-    
-
+    Team_themes.delete_all
+    Team_themes.create(:id=>1,:teams_id=>1,:themes_id=>1)
+    Team_themes.create(:id=>2,:teams_id=>1,:themes_id=>2)    
+    Team_themes.create(:id=>3,:teams_id=>2,:themes_id=>3)
+    Team_themes.create(:id=>4,:teams_id=>3,:themes_id=>1)       
+puts "Sucess: Team_themes data loaded"
 # Theme.create(:id => 1, :name=>'Lite', :background_color=>'0xC7FFD5', :title_text_color=>'0x222222',
 #     :component_theme_color=>'0x001277', :carrier_select_color=>'0x7683FF', :label_text_color=>'0x000000',
 #     :join_upper_gradient=>'0x6FAEFF', :join_lower_gradient=>'0x000000', :join_text_color=>'0xFFFFFF',
