@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_12_09_114712) do
+=======
+ActiveRecord::Schema.define(version: 2018_12_08_233325) do
+>>>>>>> a9c0fbe260ab2b86227563d27725e09c71ac380d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,18 +31,25 @@ ActiveRecord::Schema.define(version: 2018_12_09_114712) do
 
   create_table "participants", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password"
     t.boolean "vegan"
     t.string "tshirt_size"
     t.string "motor_difficulties"
     t.string "allergies"
-    t.boolean "caption"
+    t.boolean "leader"
     t.string "phone"
+    t.string "course"
+    t.bigint "user_id"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_participants_on_team_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_themes", force: :cascade do |t|
@@ -52,7 +63,24 @@ ActiveRecord::Schema.define(version: 2018_12_09_114712) do
     t.string "name"
     t.string "project"
     t.string "description"
-    t.datetime "edition"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,4 +96,7 @@ ActiveRecord::Schema.define(version: 2018_12_09_114712) do
   add_foreign_key "team_themes", "teams", column: "teams_id"
   add_foreign_key "team_themes", "themes", column: "themes_id"
   add_foreign_key "themes", "mentors", column: "mentors_id"
+  add_foreign_key "participants", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end
