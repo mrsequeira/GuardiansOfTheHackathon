@@ -7,15 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Mentors.delete_all
-Mentors.create(:id=>1,:name_mentor=>'José',:email_mentor=>'jose@mail.pt',:password_mentor=>'1234',:vegan=> true,:tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> 'Asma')
-Mentors.create(:id=>2,:name_mentor=>'Manuel',:email_mentor=>'manuel@mail.pt',:password_mentor=>'1234',:vegan=> true,:tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '')
-Mentors.create(:id=>3,:name_mentor=>'Paulo',:email_mentor=>'paulo@mail.pt',:password_mentor=>'1234',:vegan=> true, :tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '')
-Mentors.create(:id=>4,:name_mentor=>'Carlos',:email_mentor=>'carlos@mail.pt',:password_mentor=>'1234',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '')
+Mentors.create(:id=>1,:name_mentor=>'José',:vegan=> true,:tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> 'Asma',:theme_id=>1,:user_id=>16)
+Mentors.create(:id=>2,:name_mentor=>'Renato',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '',:theme_id=>2,:user_id=>14)
+Mentors.create(:id=>3,:name_mentor=>'Manuel Barros',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '',:theme_id=>3,:user_id=>15)
+
 puts "Success: Mentors data loaded"
+
 Themes.delete_all
-Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo',:mentors_id=>1)
-Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient',:mentors_id=>2)
-Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade',:mentors_id=>4)
+Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
+Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
+Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
 puts "Success: Themes data loaded"    
 
 User.delete_all
@@ -33,8 +34,9 @@ User.create(:id=>10, :password=>'123', :email=>'aluno19436@ipt.pt',:photo=>'')
 User.create(:id=>11, :password=>'123', :email=>'aluno19437@ipt.pt',:photo=>'')
 User.create(:id=>12, :password=>'123', :email=>'aluno19438@ipt.pt',:photo=>'')
 User.create(:id=>13, :password=>'123', :email=>'aluno19439@ipt.pt',:photo=>'')
-User.create(:id=>14, :password=>'123', :email=>'aluno19440@ipt.pt',:photo=>'')
-
+User.create(:id=>14, :password=>'123', :email=>'renatopanda@ipt.pt',:photo=>'')
+User.create(:id=>15, :password=>'123', :email=>'manuel.barros@ipt.pt',:photo=>'')
+User.create(:id=>16, :password=>'123', :email=>'sushi.barros@ipt.pt',:photo=>'')
 puts "Success: User data loaded"
 
 Role.delete_all
@@ -215,18 +217,10 @@ Participant.create(:id=>13,
     :team_id=>4,
     :user_id=>13)
 
-<<<<<<< HEAD
     Team_themes.delete_all
     Team_themes.create(:id=>1,:teams_id=>1,:themes_id=>1)
     Team_themes.create(:id=>2,:teams_id=>1,:themes_id=>2)    
     Team_themes.create(:id=>3,:teams_id=>2,:themes_id=>3)
     Team_themes.create(:id=>4,:teams_id=>3,:themes_id=>1)       
 puts "Sucess: Team_themes data loaded"
-# Theme.create(:id => 1, :name=>'Lite', :background_color=>'0xC7FFD5', :title_text_color=>'0x222222',
-#     :component_theme_color=>'0x001277', :carrier_select_color=>'0x7683FF', :label_text_color=>'0x000000',
-#     :join_upper_gradient=>'0x6FAEFF', :join_lower_gradient=>'0x000000', :join_text_color=>'0xFFFFFF',
-#     :cancel_link_color=>'0x001277', :border_color=>'0x888888', :carrier_text_color=>'0x000000', :public => true)
-=======
-puts "Sucess: Participant data loaded"
     
->>>>>>> a9c0fbe260ab2b86227563d27725e09c71ac380d

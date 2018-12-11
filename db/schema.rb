@@ -10,23 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_12_09_114712) do
-=======
-ActiveRecord::Schema.define(version: 2018_12_08_233325) do
->>>>>>> a9c0fbe260ab2b86227563d27725e09c71ac380d
+ActiveRecord::Schema.define(version: 2018_12_11_151201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "mentors", force: :cascade do |t|
     t.string "name_mentor"
-    t.string "email_mentor"
-    t.string "password_mentor"
     t.boolean "vegan"
     t.string "tshirt_size"
     t.string "mentor_difficulties"
     t.string "mentor_allergies"
+    t.bigint "theme_id"
+    t.bigint "user_id"
+    t.index ["theme_id"], name: "index_mentors_on_theme_id"
+    t.index ["user_id"], name: "index_mentors_on_user_id"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -68,6 +66,11 @@ ActiveRecord::Schema.define(version: 2018_12_08_233325) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "themes", force: :cascade do |t|
+    t.string "name_theme"
+    t.string "description_theme"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "role_id"
     t.bigint "user_id"
@@ -79,24 +82,16 @@ ActiveRecord::Schema.define(version: 2018_12_08_233325) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "themes", force: :cascade do |t|
-    t.string "name_theme"
-    t.string "description_theme"
-    t.bigint "mentors_id"
-    t.index ["mentors_id"], name: "index_themes_on_mentors_id"
-  end
-
   add_foreign_key "participants", "teams"
+  add_foreign_key "participants", "users"
   add_foreign_key "team_themes", "teams", column: "teams_id"
   add_foreign_key "team_themes", "themes", column: "themes_id"
-  add_foreign_key "themes", "mentors", column: "mentors_id"
-  add_foreign_key "participants", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
