@@ -1,8 +1,13 @@
 #!/bin/bash
+
+echo '############  Create root user for postgres... ############ '
+sudo -u postgres createuser -s root; 
+
+echo '############  Change comunication method for postgres... ############ '
 sudo rm /etc/postgresql/10/main/pg_hba.conf
 # If you need to do this with root privileges use sudo sh -c
 sudo sh -c 'echo " # Database administrative login by Unix domain socket
-    local   all             postgres                                peer
+    local   all             postgres                                trust
 
     # TYPE  DATABASE        USER            ADDRESS                 METHOD
 
@@ -18,10 +23,15 @@ sudo sh -c 'echo " # Database administrative login by Unix domain socket
     host    replication     all             127.0.0.1/32            md5
     host    replication     all             ::1/128                 md5" >> /etc/postgresql/10/main/pg_hba.conf'
 
+cat /etc/postgresql/10/main/pg_hba.conf
+
 echo '############  Restarting postgres services... ############ '
 sudo service postgresql restart
+
+# sudo -u postgres psql postgres
+# \password postgres
 
 echo '############  Creating db... ############ '
 cd /vagrant
 sudo rake db:setup
-#sudo rake db:setup && rake db:create && rake db:migrate
+#sudo rake db:setup && rake db:create && rake db:migrate        

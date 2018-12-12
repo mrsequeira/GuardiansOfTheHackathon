@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
 Mentors.delete_all
 Mentors.create(:id=>1,:name_mentor=>'José',:vegan=> true,:tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> 'Asma',:theme_id=>1,:user_id=>16)
@@ -21,22 +22,32 @@ puts "Success: Themes data loaded"
 
 User.delete_all
 
-User.create(:id=>1, :password=>'123', :email=>'aluno19426@ipt.pt',:photo=>'')
-User.create(:id=>2, :password=>'123', :email=>'aluno19428@ipt.pt',:photo=>'')
-User.create(:id=>3, :password=>'123', :email=>'aluno19429@ipt.pt',:photo=>'')
-User.create(:id=>4, :password=>'123', :email=>'aluno19430@ipt.pt',:photo=>'')
-User.create(:id=>5, :password=>'123', :email=>'aluno19431@ipt.pt',:photo=>'')
-User.create(:id=>6, :password=>'123', :email=>'aluno19432@ipt.pt',:photo=>'')
-User.create(:id=>7, :password=>'123', :email=>'aluno19433@ipt.pt',:photo=>'')
-User.create(:id=>8, :password=>'123', :email=>'aluno19434@ipt.pt',:photo=>'')
-User.create(:id=>9, :password=>'123', :email=>'aluno19435@ipt.pt',:photo=>'')
-User.create(:id=>10, :password=>'123', :email=>'aluno19436@ipt.pt',:photo=>'')
-User.create(:id=>11, :password=>'123', :email=>'aluno19437@ipt.pt',:photo=>'')
-User.create(:id=>12, :password=>'123', :email=>'aluno19438@ipt.pt',:photo=>'')
-User.create(:id=>13, :password=>'123', :email=>'aluno19439@ipt.pt',:photo=>'')
-User.create(:id=>14, :password=>'123', :email=>'renatopanda@ipt.pt',:photo=>'')
-User.create(:id=>15, :password=>'123', :email=>'manuel.barros@ipt.pt',:photo=>'')
-User.create(:id=>16, :password=>'123', :email=>'sushi.barros@ipt.pt',:photo=>'')
+# Plaka, Não precisavas de dar overkill! Nao estás em TI2 don't worry! looK: ref: https://github.com/stympy/faker#installing 
+# Exemplo:
+$paciencia = 1
+$preguica = 16 
+# Em ruby tbm tens loops
+while $paciencia < $preguica  do
+    User.create(:id=> $i, :password=>'123', :email=>Faker::Internet.unique.email,:photo=>'')
+    $paciencia +=1 
+end
+
+# User.create(:id=>1, :password=>'123', :email=>'aluno19426@ipt.pt',:photo=>'')
+# User.create(:id=>2, :password=>'123', :email=>'aluno19428@ipt.pt',:photo=>'')
+# User.create(:id=>3, :password=>'123', :email=>'aluno19429@ipt.pt',:photo=>'')
+# User.create(:id=>4, :password=>'123', :email=>'aluno19430@ipt.pt',:photo=>'')
+# User.create(:id=>5, :password=>'123', :email=>'aluno19431@ipt.pt',:photo=>'')
+# User.create(:id=>6, :password=>'123', :email=>'aluno19432@ipt.pt',:photo=>'')
+# User.create(:id=>7, :password=>'123', :email=>'aluno19433@ipt.pt',:photo=>'')
+# User.create(:id=>8, :password=>'123', :email=>'aluno19434@ipt.pt',:photo=>'')
+# User.create(:id=>9, :password=>'123', :email=>'aluno19435@ipt.pt',:photo=>'')
+# User.create(:id=>10, :password=>'123', :email=>'aluno19436@ipt.pt',:photo=>'')
+# User.create(:id=>11, :password=>'123', :email=>'aluno19437@ipt.pt',:photo=>'')
+# User.create(:id=>12, :password=>'123', :email=>'aluno19438@ipt.pt',:photo=>'')
+# User.create(:id=>13, :password=>'123', :email=>'aluno19439@ipt.pt',:photo=>'')
+# User.create(:id=>14, :password=>'123', :email=>'renatopanda@ipt.pt',:photo=>'')
+# User.create(:id=>15, :password=>'123', :email=>'manuel.barros@ipt.pt',:photo=>'')
+# User.create(:id=>16, :password=>'123', :email=>'sushi.barros@ipt.pt',:photo=>'')
 puts "Success: User data loaded"
 
 Role.delete_all
