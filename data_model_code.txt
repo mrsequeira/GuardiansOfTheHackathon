@@ -1,0 +1,20 @@
+/*If you want, insert here the code of your tables to have all db code in just one file*/
+
+CREATE TABLE mentor(
+    id_mentor integer,
+    name_mentor character(30),
+    email_mentor character(30),
+    password_mentor character(15),
+    vegan boolean,
+    tshirt_size character(3),
+    mentor_difficulties character(50),
+    mentor_allergies character(50),PRIMARY KEY (id_mentor));  
+
+CREATE TABLE theme(
+    id_theme integer,
+    name_theme character(30),
+    description_theme character(30),
+    id_mentor integer,
+    PRIMARY KEY (id_theme),
+     FOREIGN KEY (id_mentor) REFERENCES mentor(id_mentor));  
+

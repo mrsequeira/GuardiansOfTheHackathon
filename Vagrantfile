@@ -38,6 +38,8 @@ Vagrant.configure("2") do |config|
     echo '############ Installing graphviz to draw our diagram ER... ############ '
     ############ Installing graphviz for ER diagrams... ############ '
     sudo apt-get install -yq graphviz libgraphviz-dev graphviz-dev pkg-config
+
+    chmod +x inst_db.sh
   SHELL
 
   config.vm.provision "shell", path: "inst_db.sh"

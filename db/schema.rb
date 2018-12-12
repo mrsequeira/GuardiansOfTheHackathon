@@ -10,9 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_12_11_151201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "mentors", force: :cascade do |t|
+    t.string "name_mentor"
+    t.boolean "vegan"
+    t.string "tshirt_size"
+    t.string "mentor_difficulties"
+    t.string "mentor_allergies"
+    t.bigint "theme_id"
+    t.bigint "user_id"
+    t.index ["theme_id"], name: "index_mentors_on_theme_id"
+    t.index ["user_id"], name: "index_mentors_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.string "name"
+    t.boolean "vegan"
+    t.string "tshirt_size"
+    t.string "motor_difficulties"
+    t.string "allergies"
+    t.boolean "leader"
+    t.string "phone"
+    t.string "course"
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_participants_on_team_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_themes", force: :cascade do |t|
+    t.bigint "teams_id"
+    t.bigint "themes_id"
+    t.index ["teams_id"], name: "index_team_themes_on_teams_id"
+    t.index ["themes_id"], name: "index_team_themes_on_themes_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "project"
+    t.string "description"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.string "name_theme"
+    t.string "description_theme"
+  end
+
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "participants", "teams"
+  add_foreign_key "participants", "users"
+  add_foreign_key "team_themes", "teams", column: "teams_id"
+  add_foreign_key "team_themes", "themes", column: "themes_id"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end
