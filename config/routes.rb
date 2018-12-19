@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
   get 'welcome/Index'
 
-  # namespace :api do
-  #   namespace :v1 do
-        resources :participants
-  #   end
-  # end
-  resources :teams, format: "json" do
-    resources :themes
+  namespace :api do
+    # namespace :v1 do
+    resources :participants
+    # end
+    resources :teams do
+      get '/themes', to: 'teams#indexTeams'
+    end
+
+    resources :themes do
+      get '/teams', to: 'themes#indexThemes'
+    end
+    # resources :themes, format: "json" do
+    #  resources :teams, format: "json"
+    # end
   end
 
-  get '/themes/', to: 'themes#index1'
-  get '/themes/:id', to: 'themes#show1'
+  root 'participants#index'
 end

@@ -1,1 +1,1 @@
-#json.partial! "themes/theme", theme: @theme
+json.extract! @theme, :id, :name_theme, :description_theme
