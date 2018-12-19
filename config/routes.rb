@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
   get 'welcome/Index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # namespace :api do
+  #   namespace :v1 do
+      resources :participants
+  #   end
+  # end
+
+  root 'participants#index'
 end

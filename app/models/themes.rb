@@ -1,3 +1,5 @@
 class Themes < ApplicationRecord
-    belongs_to :mentors
-  end
+  has_many :mentors
+  has_many :team_themes
+  has_many :mentors, :through => :team_themes
+end
