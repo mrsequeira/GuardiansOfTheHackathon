@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :teams, format: "json" do
     resources :themes
   end
-  root 'participants#index'
+
+  get '/themes/', to: 'themes#index1'
+  get '/themes/:id', to: 'themes#show1'
 end
