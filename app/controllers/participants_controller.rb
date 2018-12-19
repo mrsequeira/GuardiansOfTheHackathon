@@ -7,7 +7,6 @@ class ParticipantsController < ApplicationController
   def index
     @participants = Participant.all
     
-    #sem nada bomba, com o render fica todo fudido
     render json: @participants
     
   end
