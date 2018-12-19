@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   # namespace :api do
   #   namespace :v1 do
-      resources :participants
+        resources :participants
   #   end
   # end
-
+  resources :teams, format: "json" do
+    resources :themes
+  end
   root 'participants#index'
 end
