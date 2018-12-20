@@ -88,8 +88,7 @@ puts "Success: Team data loaded"
 
 
 #participants team 1
-Participant.create(:id=>1,
-    :name=>'Diogo Martins',
+Participant.create(:name=>'Diogo Martins',
     :vegan=>false,
     :tshirt_size=>'S',
     :motor_difficulties=>'',
@@ -100,7 +99,7 @@ Participant.create(:id=>1,
     :team_id=>1,
     :user_id=>1)
 
-Participant.create(:id=>2,
+Participant.create(
     :name=>'Manuel Escava',
     :vegan=>false,
     :tshirt_size=>'S',
@@ -111,7 +110,7 @@ Participant.create(:id=>2,
     :team_id=>1,
     :user_id=>2)
 
-Participant.create(:id=>3,
+Participant.create(
     :name=>'Joaquim Matias',
     :vegan=>false,
     :tshirt_size=>'M',
@@ -124,7 +123,7 @@ Participant.create(:id=>3,
 
 #participants team 2
 
-Participant.create(:id=>4,
+Participant.create(
     :name=>'Joaquim Matias',
     :vegan=>false,
     :tshirt_size=>'M',
@@ -135,7 +134,7 @@ Participant.create(:id=>4,
     :team_id=>2,
     :user_id=>4)
 
-Participant.create(:id=>5,
+Participant.create(
     :name=>'Diogo Martins',
     :vegan=>true,
     :tshirt_size=>'M',
@@ -146,7 +145,7 @@ Participant.create(:id=>5,
     :team_id=>2,
     :user_id=>5)
 
-Participant.create(:id=>6,
+Participant.create(
     :name=>'Marco Mamelcio',
     :vegan=>false,
     :tshirt_size=>'M',
@@ -157,7 +156,7 @@ Participant.create(:id=>6,
     :team_id=>2,
     :user_id=>6)
 
-Participant.create(:id=>7,
+Participant.create(
     :name=>'Diogo Martins',
     :vegan=>true,
     :tshirt_size=>'M',
@@ -170,7 +169,7 @@ Participant.create(:id=>7,
 
 #participants team 3
 
-Participant.create(:id=>8,
+Participant.create(
     :name=>'Pedro Martins',
     :vegan=>false,
     :tshirt_size=>'XL',
@@ -181,7 +180,7 @@ Participant.create(:id=>8,
     :team_id=>3,
     :user_id=>8)
 
-Participant.create(:id=>9,
+Participant.create(
     :name=>'Marco Sushi',
     :vegan=>false,
     :tshirt_size=>'L',
@@ -192,7 +191,7 @@ Participant.create(:id=>9,
     :team_id=>3,
     :user_id=>9)
 
-Participant.create(:id=>10,
+Participant.create(
     :name=>'Diogo da China',
     :vegan=>false,
     :tshirt_size=>'M',
@@ -205,7 +204,7 @@ Participant.create(:id=>10,
 
 #participants team 4
 
-Participant.create(:id=>11,
+Participant.create(
     :name=>'Pedro Manso',
     :vegan=>false,
     :tshirt_size=>'XL',
@@ -216,7 +215,7 @@ Participant.create(:id=>11,
     :team_id=>4,
     :user_id=>11)
 
-Participant.create(:id=>12,
+Participant.create(
     :name=>'José Sushi',
     :vegan=>false,
     :tshirt_size=>'L',
@@ -227,13 +226,13 @@ Participant.create(:id=>12,
     :team_id=>4,
     :user_id=>12)
 
-Participant.create(:id=>13,
+Participant.create(
     :name=>'Bruno Manuel',
     :vegan=>false,
     :tshirt_size=>'M',
     :motor_difficulties=>'Cadeira de Rodas',
     :allergies=>'Leite',
-    :leader=>false,
+    :leader=>false,   
     :phone=>'910587939',
     :team_id=>4,
     :user_id=>13)
