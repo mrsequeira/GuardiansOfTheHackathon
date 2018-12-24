@@ -9,7 +9,6 @@ one:
   leader: false
   phone: MyString
   course: MyString
-  user: one
   team: one
 
 two:
@@ -21,5 +20,4 @@ two:
   leader: false
   phone: MyString
   course: MyString
-  user: two
   team: two
