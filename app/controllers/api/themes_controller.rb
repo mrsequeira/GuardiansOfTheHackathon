@@ -1,8 +1,8 @@
 module Api
-
 	class ThemesController < ApplicationController
+
 		before_action :set_team, only: [:indexThemes]
-	  before_action :set_theme, only: [:show,:show1, :update, :destroy]
+	  	before_action :set_theme, only: [:show,:show1, :update, :destroy]
 		
 		# GET /themes
 		def index
@@ -29,23 +29,25 @@ module Api
 
 			if @theme.save
 				render json: @theme, status: :created, location: @theme
-			else
-				render json: @theme.errors, status: :unprocessable_entity
-			end
+		    else
+		      render json: @theme.errors, status: :unprocessable_entity
+		    end
 		end
 
 		# PUT /themes/1
 		def update
 			if @theme.update(theme_params)
-	          render json: @theme
-	        else
-	          render json: @theme.errors, status: :unprocessable_entity
-	        end
+	          render json: {status: 'Sucess', message:'Saved theme', data:@theme},status: :ok
+		    else
+		      render json: {status: 'Error', message:'Theme not saved', data:@theme.errors},status: :unprocessable_entity
+		    end
 		end
 
 		# DELETE /themes/1
 		def destroy
 			@theme.destroy
+			render json: {status: 'Sucess', message:'Deleted Theme', data:@theme},status: :ok
+
 		end
 
 		private
