@@ -15,9 +15,7 @@ class ParticipantsController < ApplicationController
   end
 
   def_param_group :participant do
-     param :id, Fixnum, :desc => "Participant ID", :required => true
-     param :Name, String, "Participant name",:required => false
-     param :Team_id, Integer, "Team ID",:required =>true
+     param :id, String, :desc => "Participant ID" 
   end
 
   #before a action find a id
