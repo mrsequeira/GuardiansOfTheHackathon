@@ -15,7 +15,7 @@ class ParticipantsController < ApplicationController
   end
 
   def_param_group :participant do
-     param :id, String, :desc => "Participant ID" 
+    param :id, String, :desc => "Participant ID" 
   end
 
   #before a action find a id
