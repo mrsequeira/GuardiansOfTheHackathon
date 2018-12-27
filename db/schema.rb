@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_151201) do
+ActiveRecord::Schema.define(version: 2018_12_18_235321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "mentors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name_mentor"
     t.boolean "vegan"
     t.string "tshirt_size"
@@ -51,9 +53,11 @@ ActiveRecord::Schema.define(version: 2018_12_11_151201) do
   end
 
   create_table "team_themes", force: :cascade do |t|
-    t.bigint "teams_id"
+    t.bigint "team_id"
     t.bigint "themes_id"
-    t.index ["teams_id"], name: "index_team_themes_on_teams_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_themes_on_team_id"
     t.index ["themes_id"], name: "index_team_themes_on_themes_id"
   end
 
@@ -90,7 +94,7 @@ ActiveRecord::Schema.define(version: 2018_12_11_151201) do
 
   add_foreign_key "participants", "teams"
   add_foreign_key "participants", "users"
-  add_foreign_key "team_themes", "teams", column: "teams_id"
+  add_foreign_key "team_themes", "teams"
   add_foreign_key "team_themes", "themes", column: "themes_id"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
