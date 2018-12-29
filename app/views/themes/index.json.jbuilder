@@ -1,1 +1,1 @@
-#json.array! @themes, partial: 'themes/theme', as: :theme
+json.array! @themes, partial: 'themes/theme', as: :theme

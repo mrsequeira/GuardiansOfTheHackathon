@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/Index'
 
-  namespace :api do
+  # namespace :api do
     # namespace :v1 do
     resources :participants
     # end
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     # resources :themes, format: "json" do
     #  resources :teams, format: "json"
     # end
-  end
+  # end
 
   root 'participants#index'
 end

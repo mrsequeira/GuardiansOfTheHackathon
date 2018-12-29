@@ -1,1 +1,2 @@
-json.partial! "teams/team", team: @team
+json.extract! @team, :id, :name, :project, :description, :photo, :created_at, :updated_at
+json.url team_url(@team, format: :json)
