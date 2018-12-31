@@ -24,7 +24,7 @@ class ThemesController < ApplicationController
 
 	# POST /themes
 	def create
-		@theme.new(theme_params)
+		@theme.Themes.new(theme_params)
 
 		if @theme.save
 			render json: @theme, status: :created, location: @theme
