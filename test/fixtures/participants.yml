@@ -1,25 +1,34 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+henrique:
+  name: Henrique Bernardo
   vegan: false
-  tshirt_size: MyString
-  motor_difficulties: MyString
-  allergies: MyString
-  leader: false
-  phone: MyString
-  course: MyString
-  user: one
+  tshirt_size: M
+  motor_difficulties: None
+  allergies: None
+  leader: true
+  phone: 123456789
+  course: Informatica
   team: one
 
-two:
-  name: MyString
-  vegan: false
-  tshirt_size: MyString
-  motor_difficulties: MyString
-  allergies: MyString
+miguel:
+  name: Miguel Silva
+  vegan: true
+  tshirt_size: L
+  motor_difficulties: None
+  allergies: None
   leader: false
-  phone: MyString
-  course: MyString
-  user: two
+  phone: 123456788
+  course: Informatica
+  team: one
+
+plaka:
+  name: Diogo Martins
+  vegan: false
+  tshirt_size: M
+  motor_difficulties: None
+  allergies: None
+  leader: true
+  phone: 123456788
+  course: Informatica
   team: two
