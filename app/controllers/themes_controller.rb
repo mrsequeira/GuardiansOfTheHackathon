@@ -5,7 +5,7 @@ class ThemesController < ApplicationController
 	
 	# GET /themes
 	def index
-    	@themes = Themes.all
+    	@themes = Theme.all
 
     	#render json: @themes
 	end
@@ -65,7 +65,7 @@ class ThemesController < ApplicationController
 		end
 
 		def set_theme
-			@theme = Themes.find(params[:id])
+			@theme = Theme.find(params[:id])
 		end
 
 		def theme_params

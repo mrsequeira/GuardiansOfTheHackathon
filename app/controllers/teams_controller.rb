@@ -54,7 +54,7 @@ private
     	@team = Team.find(params[:id])
   	end
   	def set_theme
-	 	@theme = Themes.find(params[:id])
+	 	@theme = Theme.find(params[:id])
 	end
 
 	def team_params
