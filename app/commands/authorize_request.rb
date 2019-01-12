@@ -14,16 +14,16 @@ class AuthorizeRequest
     attr_reader :headers  
   
     def user
-      @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token # Issue here!!! (Passing id hardcoded works...)
+      @user ||= User.find(decoded_auth_token["user_id"][0]["user_id"]) if decoded_auth_token 
       @user || errors.add(:token, 'Invalid token') && nil
     end
     
     def decoded_auth_token
-      @decoded_auth_token ||= JwtService.decode(http_auth_header)
+      @decoded_auth_token ||= JwtService.decode(http_auth_header.split(' ').last)
     end
   
     def http_auth_header
-      puts "Headers: #{headers['Authorization']}" 
+      #puts "Headers: #{headers['Authorization']}" 
       if headers['Authorization'].present?
         #puts "Splip feito #{headers['Authorization'].split(' ').last} "
         return headers['Authorization'].split(' ').last
