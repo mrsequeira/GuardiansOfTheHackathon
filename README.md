@@ -20,6 +20,8 @@ before action #To controll routes via permissions(admin,etc)
 # Ver rotas em: xxxx/router.rb
 rails routes # Mostrar rotas para controladorses
 api namespace #gerar automaticamente a versão de uma api,por exemplo, no ficheiro de rotas
+
+rails g scaffold_controller <name>
 ```
 
 ## Connect to postgresSQL
@@ -37,7 +39,7 @@ SELECT * FROM table_name;
 bundle exec erd #It will save a pdf file on root directory
 ```
 
-## Test JWT auth: 
+## JWT auth: 
 Advise: Use Postman or... use the stone age way
 ```bash
 # Create a user:
@@ -45,16 +47,13 @@ http://localhost:3000/api/v1/authenticate/
 # Obatin JWT (this was divided for security reasons)
 http://localhost:3000/api/v1/login/
 
-body example:
+body example(json format):
 {
 	"email": "example@ipt.pt",
 	"password" : "example"
 }
 
 ```
-
-
-
 
 ## New aproach to use credentials on rails version >5.2
 * You need the master.key - Create this file on config folder and paste the key provided by some guy/girl
@@ -76,7 +75,8 @@ https://laracasts.com/discuss/channels/general-discussion/fortgot-vagrant-passwo
 
 To add:
 * Services (job queues, cache servers, search engines, etc.)
-rails g scaffold_controller <name>
+
+
 ## Git free tips:
 git show-branch -a
 git checkout <branch-to-change>

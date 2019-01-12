@@ -4,12 +4,16 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :participants
+      # Controller resources
+      resources :users
+      resources :roles
+      resources :user_roles
       resources :events 
-      #resource :authentication
+      resources :participants
       
       post 'authenticate', to: 'authentication#authenticate'
-   
+      post 'login', to: 'authentication#login'
+
     end  
   end
 

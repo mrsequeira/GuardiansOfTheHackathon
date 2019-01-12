@@ -103,6 +103,6 @@ ActiveRecord::Schema.define(version: 2018_12_23_162615) do
   add_foreign_key "participants", "users", on_delete: :nullify 
   add_foreign_key "team_themes", "teams"
   add_foreign_key "team_themes", "themes", column: "themes_id"
-  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "roles", on_delete: :nullify 
   add_foreign_key "user_roles", "users", on_delete: :nullify 
 end

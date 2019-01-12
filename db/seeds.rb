@@ -1,13 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-
-
 
 Mentor.delete_all
 Participant.delete_all
@@ -22,9 +15,10 @@ $paciencia = 1
 $preguica = 16
 # Em ruby tbm tens loops
 while $paciencia < $preguica  do
-    User.create(:id=> $i, :password=>'123', :email=>Faker::Internet.unique.email,:photo=>'')
+    User.create(:id=> $i, :password=>Faker::Internet.unique.password, :email=>Faker::Internet.unique.email,:photo=>'')
     $paciencia +=1
 end
+puts "Success: User data loaded"
 
 Mentor.create(:id=>1,:name_mentor=>'José',:vegan=> true,:tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> 'Asma',:user_id=>16,:theme_id=>1)
 Mentor.create(:id=>2,:name_mentor=>'Renato',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '',:user_id=>14,:theme_id=>2)
