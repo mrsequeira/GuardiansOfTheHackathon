@@ -5,15 +5,9 @@ Rails.application.routes.draw do
     # namespace :v1 do
     resources :participants
     # end
-    resources :teams do
-      get '/themes', to: 'teams#indexTeams'
-    end
-
-    resources :themes do
-      get '/teams', to: 'themes#indexThemes'
-    end
-    # resources :themes, format: "json" do
-    #  resources :teams, format: "json"
+    resources :teams
+    resources :themes
+    resources :team_themes
     # end
   # end
 

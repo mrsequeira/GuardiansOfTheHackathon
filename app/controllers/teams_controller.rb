@@ -1,7 +1,6 @@
 class TeamsController < ApplicationController
 	  
   	before_action :set_team, only: [:show, :update, :destroy]
-	before_action :set_theme, only: [:indexTeams]
 	
 	# GET /teams/1
 	def show
@@ -15,13 +14,6 @@ class TeamsController < ApplicationController
 	    #render json: @teams
 	end
 
-	# GET /team/1/themes
-	def indexTeams
-    	@teams = @team.theme.all
-
-    	#render json: @teams
-	end
-  
 	# POST /teams
 	def create
 		@team = Team.new(team_params)
@@ -53,12 +45,8 @@ private
   	def set_team
     	@team = Team.find(params[:id])
   	end
-  	def set_theme
-	 	@theme = Theme.find(params[:id])
-	end
 
 	def team_params
       params.require(:team).permit(:name, :project, :description, :photo, :created_at, :updated_at)
-      
     end
 end

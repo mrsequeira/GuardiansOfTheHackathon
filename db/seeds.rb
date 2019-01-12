@@ -17,7 +17,7 @@ require 'faker'
 
 Mentor.delete_all
 Participant.delete_all
-Themes.delete_all
+Theme.delete_all
 Team.delete_all
 User.delete_all
 Role.delete_all
@@ -49,10 +49,10 @@ Mentor.create(:id=>3,:name_mentor=>'Manuel Barros',:vegan=> true, :tshirt_size=>
 
 puts "Success: Mentor data loaded"
 
-Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
-Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
-Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
-puts "Success: Themes data loaded"
+Theme.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
+Theme.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
+Theme.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
+puts "Success: Theme data loaded"
 
 
 

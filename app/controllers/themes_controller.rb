@@ -1,20 +1,12 @@
 class ThemesController < ApplicationController
 
-	before_action :set_team, only: [:indexThemes, :destroy]
-  	before_action :set_theme, only: [:show, :indexThemes, :update, :destroy]
+  	before_action :set_theme, only: [:show, :update, :destroy]
 	
 	# GET /themes
 	def index
     	@themes = Theme.all
 
     	#render json: @themes
-	end
-
-	# GET /team/1/themes
-	def indexThemes
-		@themes = @theme.team.all
-
-    	#render json: @team
 	end
 
 	# GET /themes/1
@@ -46,17 +38,6 @@ class ThemesController < ApplicationController
 	def destroy
 		@theme.destroy
 		render json: {status: 'Sucess', message:'Deleted theme', data:@theme},status: :ok
-		#@theme.team.destroy
-		#for c in @theme.team.all
-		#  c.destroy
-		#end
-		#@theme.destroy
-		#render json: {status: 'Sucess', message:'Deleted Theme', data:@theme},status: :ok
-
-	    #if category
-	    #    @theme.team.delete(@team)
-	    #end
-
 	end
 
 	private
