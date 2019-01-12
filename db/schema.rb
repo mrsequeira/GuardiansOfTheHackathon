@@ -10,16 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_12_23_162615) do
-=======
-ActiveRecord::Schema.define(version: 2018_12_18_235321) do
->>>>>>> 1f5f6f03cf0a08cae42a135b82a7eddc0f95977c
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "event", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
@@ -102,11 +98,11 @@ ActiveRecord::Schema.define(version: 2018_12_18_235321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+  # on_delete: :nullify -> Remove references on tables 
   add_foreign_key "participants", "teams"
-  add_foreign_key "participants", "users"
+  add_foreign_key "participants", "users", on_delete: :nullify 
   add_foreign_key "team_themes", "teams"
   add_foreign_key "team_themes", "themes", column: "themes_id"
   add_foreign_key "user_roles", "roles"
-  add_foreign_key "user_roles", "users"
+  add_foreign_key "user_roles", "users", on_delete: :nullify 
 end

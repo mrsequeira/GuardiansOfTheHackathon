@@ -38,14 +38,23 @@ bundle exec erd #It will save a pdf file on root directory
 ```
 
 ## Test JWT auth: 
-Advise: Use Postman or use stone age way
+Advise: Use Postman or... use the stone age way
 ```bash
-rails c
-User.create!(email: 'example@mail.com' , password: '123123123') #Create new user to use OR use a already created user
-curl -H "Content-Type: application/json" -X POST -d '{"email":"example@mail.com","password":"123123123"}' http://localhost:3000/api/v1/authenticate
-http://localhost:3000/api/v1/events 
-curl -H "Authorization: <your-jwt-joken> " http://localhost:3000/events
+# Create a user:
+http://localhost:3000/api/v1/authenticate/
+# Obatin JWT (this was divided for security reasons)
+http://localhost:3000/api/v1/login/
+
+body example:
+{
+	"email": "example@ipt.pt",
+	"password" : "example"
+}
+
 ```
+
+
+
 
 ## New aproach to use credentials on rails version >5.2
 * You need the master.key - Create this file on config folder and paste the key provided by some guy/girl
@@ -61,11 +70,13 @@ Rails.application.credentials.foo #ACESS - will return bar
 ```
 https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
 
-
-
 ### If vagrant ask you the password
 Password will be: vagrant
 https://laracasts.com/discuss/channels/general-discussion/fortgot-vagrant-password?page=1
 
 To add:
 * Services (job queues, cache servers, search engines, etc.)
+rails g scaffold_controller <name>
+## Git free tips:
+git show-branch -a
+git checkout <branch-to-change>
