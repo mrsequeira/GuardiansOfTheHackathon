@@ -1,12 +1,17 @@
 class ParticipantsController < ApplicationController
 
+  before_action :apipie_validations
+
+  #before a action find a id
+  before_action :set_participant, only: [:show, :update, :destroy]
+  
   resource_description do
     short 'APIpie for model participants'
     description 'This api its build to project called Guardians of Hackton to subject called Engenharia Software oriented by Renato Panda'
     formats ['json']
     # param :id, Fixnum, :desc => "Participant ID", :required => true
     error 404, "Missing"
-    error 500, "Server crashed for some <%= reason %>", :meta => {:anything => "you can think of"}
+    error 500, "Server crashed"
     error :unprocessable_entity, "Could not save the entity."
     returns :code => 403 do
        property :reason, String, :desc => "Why this was forbidden"
@@ -15,11 +20,17 @@ class ParticipantsController < ApplicationController
   end
 
   def_param_group :participant do
-    param :id, String, :desc => "Participant ID" 
+    param :id, Integer, :desc => "Participant ID"
+    param :name, String, :desc => "Name of participant"
+    param :vegan, String, :desc => "Vegan"
+    param :tshirt_size, String, :desc => "Size of T-Shirt of participant"
+    param :motor_difficulties, String, :desc => "Motor Difficulties of participant"
+    param :allergies, String, :desc => "Allergies of participant"
+    param :phone, String, :desc => "Phone of participant"
+    param :leader, String, :desc => "Leader of Team"
   end
 
-  #before a action find a id
-  before_action :set_participant, only: [:show, :update, :destroy]
+
 
   # GET /participants
   api :GET, '/participants' , 'Get all participants'
