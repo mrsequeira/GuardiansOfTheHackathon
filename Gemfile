@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'apipie-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -28,6 +28,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+
+# coverage gem
+gem 'simplecov', require: false, group: :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
