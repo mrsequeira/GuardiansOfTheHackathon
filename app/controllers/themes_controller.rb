@@ -16,7 +16,7 @@ class ThemesController < ApplicationController
 
 	# POST /themes
 	def create
-		@theme.Themes.new(theme_params)
+		@theme =Theme.new(theme_params)
 
 		if @theme.save
 			render json: @theme, status: :created, location: @theme
@@ -41,10 +41,6 @@ class ThemesController < ApplicationController
 	end
 
 	private
-		def set_team
-	     	@team = @theme.Team.find(params[:id])
-		end
-
 		def set_theme
 			@theme = Theme.find(params[:id])
 		end
