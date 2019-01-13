@@ -49,9 +49,9 @@ Mentor.create(:id=>3,:name_mentor=>'Manuel Barros',:vegan=> true, :tshirt_size=>
 
 puts "Success: Mentor data loaded"
 
-Theme.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
-Theme.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
-Theme.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
+Theme.create(:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
+Theme.create(:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
+Theme.create(:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
 puts "Success: Theme data loaded"
 
 
@@ -76,13 +76,13 @@ UserRole.create(:user_id=>2,:role_id=>2)
 puts "Success: User_Role data loaded"
 
 
-Team.create(:id=>1, :name=>'soviemoscomer', :project=>'GuiaTomar',:description=>'Uma aplicação móvel que serve como guia para um turista em Tomar',:photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/ab62b50f626550ca2fbd07c5d60cf47d/5CA0524E/t51.2885-15/e35/33090883_177708922943332_8539101596762505216_n.jpg?_nc_ht=instagram.flis2-1.fna.fbcdn.net')
+Team.create(:name=>'soviemoscomer', :project=>'GuiaTomar',:description=>'Uma aplicação móvel que serve como guia para um turista em Tomar',:photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/ab62b50f626550ca2fbd07c5d60cf47d/5CA0524E/t51.2885-15/e35/33090883_177708922943332_8539101596762505216_n.jpg?_nc_ht=instagram.flis2-1.fna.fbcdn.net')
 
-Team.create(:id=>2, :name=>'hackaros', :project=>'FunerariaNoPulso',:description=>'Uma pulseira que lê o batimento cardiaco do idoso, e quando este falecer, liga para a funerária',:photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/bf9c982e5e475c9eb137849bcd8e8963/5CAFD6B5/t51.2885-15/e35/33129318_628097007532649_1740681736045461504_n.jpg')
+Team.create(:name=>'hackaros', :project=>'FunerariaNoPulso',:description=>'Uma pulseira que lê o batimento cardiaco do idoso, e quando este falecer, liga para a funerária',:photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/bf9c982e5e475c9eb137849bcd8e8963/5CAFD6B5/t51.2885-15/e35/33129318_628097007532649_1740681736045461504_n.jpg')
 
-Team.create(:id=>3, :name=>'Campeoes_do_t3clado', :project=>'TinderDeTomar',:description=>'Uma aplicação móvel equivalente ao tinder mas bloqueia os teus ex namorados',:photo=>'')
+Team.create(:name=>'Campeoes_do_t3clado', :project=>'TinderDeTomar',:description=>'Uma aplicação móvel equivalente ao tinder mas bloqueia os teus ex namorados',:photo=>'')
 
-Team.create(:id=>4, :name=>'gaymerstetris', :project=>'forumTomar',:description=>'Uma aplicação móvel/web que serve para relatar inconsistencias na via pública de Tomar',:photo=>'')
+Team.create(:name=>'gaymerstetris', :project=>'forumTomar',:description=>'Uma aplicação móvel/web que serve para relatar inconsistencias na via pública de Tomar',:photo=>'')
 
 puts "Success: Team data loaded"
 
@@ -239,8 +239,8 @@ Participant.create(:id=>13,
     :user_id=>13)
 
 
-    TeamTheme.create(:id=>1,:team_id=>1,:themes_id=>1)
-    TeamTheme.create(:id=>2,:team_id=>1,:themes_id=>2)
-    TeamTheme.create(:id=>3,:team_id=>2,:themes_id=>3)
-    TeamTheme.create(:id=>4,:team_id=>3,:themes_id=>1)
+    TeamTheme.create(:team_id=>1,:theme_id=>1)
+    TeamTheme.create(:team_id=>1,:theme_id=>2)
+    TeamTheme.create(:team_id=>2,:theme_id=>3)
+    TeamTheme.create(:team_id=>3,:theme_id=>1)
 puts "Sucess: TeamTheme data loaded"

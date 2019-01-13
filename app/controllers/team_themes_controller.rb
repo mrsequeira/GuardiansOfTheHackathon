@@ -33,6 +33,7 @@ class TeamThemesController < ApplicationController
   # DELETE /team_themes/1
   def destroy
     @team_theme.destroy
+    render json: {status: 'Sucess', message:'Deleted theme', data:@team_theme},status: :ok
   end
 
   private
@@ -44,6 +45,6 @@ class TeamThemesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_theme_params
       #params.fetch(:team_theme, {})
-      params.require(:team_theme).permit(:team_id, :themes_id, :create_at, :updated_at)
+      params.require(:team_theme).permit(:team_id, :theme_id, :create_at, :updated_at)
     end
 end
