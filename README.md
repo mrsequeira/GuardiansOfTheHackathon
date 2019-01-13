@@ -4,6 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon)
 [![GitHub issues](https://img.shields.io/github/issues/mrsequeira/GuardiansOfTheHackathon.svg?style=plastic)](https://github.com/mrsequeira/GuardiansOfTheHackathon/issues)
 [![security](https://hakiri.io/github/mrsequeira/GuardiansOfTheHackathon/master.svg)](https://hakiri.io/github/mrsequeira/GuardiansOfTheHackathon/master)
+ [![Known Vulnerabilities](https://snyk.io/test/github/mrsequeira/GuardiansOfTheHackathon/badge.svg)](https://snyk.io/test/github/mrsequeira/GuardiansOfTheHackathon) 
 
 [![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon?branch=master)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
 [![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
