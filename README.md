@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon.svg?branch=master)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon)
+[![Coverage Status](https://coveralls.io/repos/github/GuardiansOfTheHackathon/GuardiansOfTheHackathon/badge.svg?branch=master)](https://coveralls.io/github/c/GuardiansOfTheHackathon?branch=master)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon)
+
+
+
 # Guardians of the Hackathon 
 * Description of the project here
 
