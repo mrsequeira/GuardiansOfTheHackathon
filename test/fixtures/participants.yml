@@ -1,25 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Diogo
   vegan: false
-  tshirt_size: MyString
-  motor_difficulties: MyString
-  allergies: MyString
-  leader: false
-  phone: MyString
-  course: MyString
-  user: one
-  team: one
+  tshirt_size: S
+  motor_difficulties: nada
+  allergies: nada
+  leader: false   
+  phone: 916488198 
+  course: LEI
+  user_id: 18
+  team_id: 2
 
-two:
-  name: MyString
-  vegan: false
-  tshirt_size: MyString
-  motor_difficulties: MyString
-  allergies: MyString
-  leader: false
-  phone: MyString
-  course: MyString
-  user: two
-  team: two
+# two:
+#   name: MyString
+#   vegan: false
+#   tshirt_size: MyString
+#   motor_difficulties: MyString
+#   allergies: MyString
+#   leader: false
+#   phone: MyString
+#   course: MyString
+#   user: two
+#   team: two
