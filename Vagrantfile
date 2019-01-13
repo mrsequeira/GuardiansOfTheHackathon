@@ -43,6 +43,7 @@ Vagrant.configure("2") do |config|
   SHELL
 
   config.vm.provision "shell", path: "inst_db.sh"
+  config.vm.provision "shell", path: "fqdn.sh"
  
   # config.vm.define 'hackatum' do |node|
   #   config.vm.hostname = 'hackatum.local'
