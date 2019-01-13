@@ -127,17 +127,19 @@ Participant.create(
     :allergies=>'Pó',
     :leader=>false,
     :phone=>'916582945',
+    :course=>'lei',
     :team_id=>1,
     :user_id=>2)
 
 Participant.create(
     :name=>'Joaquim Matias',
-    :vegan=>false,
+    :vegan=>true,
     :tshirt_size=>'M',
     :motor_difficulties=>'',
-    :allergies=>'Pó',
+    :allergies=>'Po',
     :leader=>false,
-    :phone=>'91487945',
+    :phone=>'914879451',
+    :course=>'lei',
     :team_id=>1,
     :user_id=>3)
 
@@ -151,6 +153,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'913587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>4)
 
@@ -162,6 +165,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'912587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>5)
 
@@ -173,6 +177,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'911587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>6)
 
@@ -184,6 +189,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'910587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>7)
 
@@ -197,6 +203,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'912587944',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>8)
 
@@ -208,6 +215,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'911587943',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>9)
 
@@ -219,6 +227,7 @@ Participant.create(
     :allergies=>'Leite',
     :leader=>false,
     :phone=>'910587942',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>10)
 
@@ -232,6 +241,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'912587941',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>11)
 
@@ -243,6 +253,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'911587940',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>12)
 
@@ -254,6 +265,7 @@ Participant.create(
     :allergies=>'Leite',
     :leader=>false,   
     :phone=>'910587939',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>13)
 

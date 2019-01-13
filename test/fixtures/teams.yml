@@ -1,13 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  project: MyString
-  description: MyString
-  photo: MyString
+  id: 1
+  name: Israel
+  project: Bombas
+  description: Trump
+  photo: 
 
-two:
-  name: MyString
-  project: MyString
-  description: MyString
-  photo: MyString
+# two:
+#   name: MyString
+#   project: MyString
+#   description: MyString
+#   photo: MyString

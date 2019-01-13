@@ -83,6 +83,9 @@ class ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:name, :team_id)
+    params.require(:participant).permit(
+      :name,:vegan, :tshirt_size, :motor_difficulties,
+      :allergies, :leader, :phone, :course, :team_id
+    )
   end
 end
