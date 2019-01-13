@@ -19,7 +19,8 @@ class AuthorizeRequest
     end
     
     def decoded_auth_token
-      @decoded_auth_token ||= JwtService.decode(http_auth_header.split(' ').last)
+      #split(' ').last
+      @decoded_auth_token ||= JwtService.decode(http_auth_header)
     end
   
     def http_auth_header

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_23_162615) do
+ActiveRecord::Schema.define(version: 2019_01_12_204738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,12 +97,14 @@ ActiveRecord::Schema.define(version: 2018_12_23_162615) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
   end
-  # on_delete: :nullify -> Remove references on tables 
+
   add_foreign_key "participants", "teams"
-  add_foreign_key "participants", "users", on_delete: :nullify 
+  add_foreign_key "participants", "users", on_delete: :nullify
   add_foreign_key "team_themes", "teams"
   add_foreign_key "team_themes", "themes", column: "themes_id"
-  add_foreign_key "user_roles", "roles", on_delete: :nullify 
-  add_foreign_key "user_roles", "users", on_delete: :nullify 
+  add_foreign_key "user_roles", "roles", on_delete: :nullify
+  add_foreign_key "user_roles", "users", on_delete: :nullify
 end

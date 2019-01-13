@@ -6,21 +6,40 @@ module Api
       
       ########################
       ## Register
+      ## next version this will be transfered to user controller!!!
       ########################
       def authenticate
-        puts "Received parameters:  #{user_params['password_confirmation']}" 
-        
-        ## Already exists?
-        replicated = User.find_by_email(params[:email])
-        puts "Replicated:  #{replicated}" 
-        if replicated 
+        puts "Received parameters:  #{user_params['email']}" 
+
+        @user = User.new(user_params)    
+        if @user.save
+          @user.set_confirmation_token
+          @user.save(validate: false)     
+          begin
+            UserMailer.registration_confirmation(@user).deliver_now  
+          rescue  Exception => e
+            logger.warn "email delivery error = #{e}"
+          end
+          render json: { sucess: "Successfully registered, confirm your email address!" }, status: :authorized 
+        else
           render json: { error: "This email already exists" }, status: :unauthorized
-        else 
-          user = User.create!(user_params)
-          # AQUI INSERIR CONFIRMAÇÃO DO EMAI  L +  adicionar na db parametro active as boolean
-          render json: { sucess: "Successfully registered" }, status: :authorized 
         end
       end
+
+
+      ########################
+      ## Email confirmation
+      ########################
+      def confirm_email
+        user = User.find_by_confirm_token(params[:token])
+        if user
+          user.validate_email
+          render json: { sucess: "Your email has been confirmed!" }, status: :authorized 
+        else
+          render json: { sucess: "Get the fckout of here!" }, status: :unauthorized 
+        end
+      end
+
 
       ########################
       ## Login(obtain jwt)

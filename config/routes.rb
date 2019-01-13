@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       
       post 'authenticate', to: 'authentication#authenticate'
       post 'login', to: 'authentication#login'
-
+      get '/:token/confirm_email/', :to => "authentication#confirm_email", as: 'confirm_email'
     end  
   end
 

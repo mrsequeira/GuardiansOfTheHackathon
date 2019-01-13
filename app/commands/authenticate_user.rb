@@ -10,7 +10,7 @@ class AuthenticateUser
 
   def call
     @result = nil
-    if passowrd_valid?
+    if passowrd_valid? && confirmed_account?
       @result = JwtService.encode(contents) 
     else
       errors.add(:authenticate, 'error authtenticating user')
@@ -23,6 +23,10 @@ class AuthenticateUser
 
   def passowrd_valid?
     user && user.authenticate(password)
+  end
+
+  def confirmed_account?
+    user && user.email_confirmed
   end
   
   def contents
