@@ -1,6 +1,6 @@
 class Mentor < ApplicationRecord
     has_one :user
-    #belongs_to :themes
+    belongs_to :theme
 
     validates :name_mentor, presence:true, length: {minimum:4, maximum:50}
     validates :tshirt_size, presence:true, length:{minimum:1, maximum:2}

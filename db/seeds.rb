@@ -43,16 +43,17 @@ User.create(:id=>16, :password=>'123', :email=>'sushi.barros@ipt.pt',:photo=>'')
 puts "Success: User data loaded"
 
 
+Theme.create(:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
+    Theme.create(:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
+    Theme.create(:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
+    puts "Success: Theme data loaded"
+    
 Mentor.create(:id=>1,:name_mentor=>'José',:vegan=> true,:tshirt_size=>'L',:mentor_difficulties=>'nenhuma',:mentor_allergies=> 'Asma',:user_id=>16,:theme_id=>1)
 Mentor.create(:id=>2,:name_mentor=>'Renato',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '',:user_id=>14,:theme_id=>2)
 Mentor.create(:id=>3,:name_mentor=>'Manuel Barros',:vegan=> true, :tshirt_size=>'M',:mentor_difficulties=>'nenhuma',:mentor_allergies=> '',:user_id=>15,:theme_id=>3)
 
 puts "Success: Mentor data loaded"
 
-Theme.create(:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
-Theme.create(:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
-Theme.create(:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
-puts "Success: Theme data loaded"
 
 
 
