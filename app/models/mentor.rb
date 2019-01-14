@@ -6,4 +6,5 @@ class Mentor < ApplicationRecord
     validates :tshirt_size, presence:true, length:{minimum:1, maximum:2}
     validates :mentor_difficulties, length: {maximum:50}
     validates :mentor_allergies, length: {maximum:50}
+    validates :theme_id, presence:true, length: {minimum:1, maximum:50}
 end
