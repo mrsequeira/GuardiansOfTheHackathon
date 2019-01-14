@@ -21,7 +21,7 @@ before action #To controll routes via permissions(admin,etc)
 rails routes # Mostrar rotas para controladorses
 api namespace #gerar automaticamente a versão de uma api,por exemplo, no ficheiro de rotas
 
-rails g scaffold_controller <name>
+rails g scaffold_controller <name> # generate controller for a certain model
 ```
 
 ## Connect to postgresSQL
@@ -52,7 +52,8 @@ body example(json format):
 	"email": "example@ipt.pt",
 	"password" : "example"
 }
-
+#forgot password(need email)
+http://localhost:3000/api/v1/forgot/
 ```
 
 ## New aproach to use credentials on rails version >5.2
@@ -80,3 +81,9 @@ To add:
 ## Git free tips:
 git show-branch -a
 git checkout <branch-to-change>
+
+Forget to create branch and have already commited files?(Use stash on addition!!!!)
+https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit
+
+### Merge development branch before doing pull request
+git pull origin development
