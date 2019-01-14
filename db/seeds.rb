@@ -216,15 +216,8 @@ Participant.create(
 puts "Success: Participant data loaded"
 
 
-<<<<<<< HEAD
 TeamTheme.create(:id=>1,:team_id=>1,:themes_id=>1)
 TeamTheme.create(:id=>2,:team_id=>1,:themes_id=>2)
 TeamTheme.create(:id=>3,:team_id=>2,:themes_id=>3)
 TeamTheme.create(:id=>4,:team_id=>3,:themes_id=>1)
-=======
-    TeamTheme.create(:team_id=>1,:theme_id=>1)
-    TeamTheme.create(:team_id=>1,:theme_id=>2)
-    TeamTheme.create(:team_id=>2,:theme_id=>3)
-    TeamTheme.create(:team_id=>3,:theme_id=>1)
->>>>>>> 9bf311c218436c35b96dd66fd8783aa73fb4b89d
 puts "Sucess: TeamTheme data loaded"

@@ -9,7 +9,6 @@
 [![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon?branch=master)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
 [![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
 
-gfg
 # Guardians of the Hackathon 
 * Description of the project here
 
@@ -85,7 +84,6 @@ https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
 ### If vagrant ask you the password
 Password will be: vagrant
 https://laracasts.com/discuss/channels/general-discussion/fortgot-vagrant-password?page=1
-<<<<<<< HEAD
 
 To add:
 * Services (job queues, cache servers, search engines, etc.)
@@ -100,5 +98,3 @@ https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-
 
 ### Merge development branch before doing pull request
 git pull origin development
-=======
->>>>>>> 9bf311c218436c35b96dd66fd8783aa73fb4b89d
