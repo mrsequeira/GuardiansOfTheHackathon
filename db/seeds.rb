@@ -76,19 +76,39 @@ UserRole.create(:user_id=>2,:role_id=>2)
 puts "Success: User_Role data loaded"
 
 
-Team.create(:id=>1, :name=>'soviemoscomer', :project=>'GuiaTomar',:description=>'Uma aplicação móvel que serve como guia para um turista em Tomar',:photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/ab62b50f626550ca2fbd07c5d60cf47d/5CA0524E/t51.2885-15/e35/33090883_177708922943332_8539101596762505216_n.jpg?_nc_ht=instagram.flis2-1.fna.fbcdn.net')
+Team.create(
+    :id=>1, 
+    :name=>'soviemoscomer', 
+    :project=>'GuiaTomar',
+    :description=>'Uma aplicação móvel que serve como guia para um turista em Tomar',
+    :photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/ab62b50f626550ca2fbd07c5d60cf47d/5CA0524E/t51.2885-15/e35/33090883_177708922943332_8539101596762505216_n.jpg?_nc_ht=instagram.flis2-1.fna.fbcdn.net')
 
-Team.create(:id=>2, :name=>'hackaros', :project=>'FunerariaNoPulso',:description=>'Uma pulseira que lê o batimento cardiaco do idoso, e quando este falecer, liga para a funerária',:photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/bf9c982e5e475c9eb137849bcd8e8963/5CAFD6B5/t51.2885-15/e35/33129318_628097007532649_1740681736045461504_n.jpg')
+Team.create(
+    :id=>2, 
+    :name=>'hackaros', 
+    :project=>'FunerariaNoPulso',
+    :description=>'Uma pulseira que lê o batimento cardiaco do idoso, e quando este falecer, liga para a funerária',
+    :photo=>'https://instagram.flis2-1.fna.fbcdn.net/vp/bf9c982e5e475c9eb137849bcd8e8963/5CAFD6B5/t51.2885-15/e35/33129318_628097007532649_1740681736045461504_n.jpg')
 
-Team.create(:id=>3, :name=>'Campeoes_do_t3clado', :project=>'TinderDeTomar',:description=>'Uma aplicação móvel equivalente ao tinder mas bloqueia os teus ex namorados',:photo=>'')
+Team.create(:id=>3,
+    :name=>'Campeoes_do_t3clado',
+    :project=>'TinderDeTomar',
+    :description=>'Uma aplicação móvel equivalente ao tinder mas bloqueia os teus ex namorados',
+    :photo=>'')
 
-Team.create(:id=>4, :name=>'gaymerstetris', :project=>'forumTomar',:description=>'Uma aplicação móvel/web que serve para relatar inconsistencias na via pública de Tomar',:photo=>'')
+Team.create(
+    :id=>4, 
+    :name=>'gaymerstetris', 
+    :project=>'forumTomar',
+    :description=>'Uma aplicação móvel/web que serve para relatar inconsistencias na via pública de Tomar',
+    :photo=>'')
 
 puts "Success: Team data loaded"
 
 
 #participants team 1
-Participant.create(:name=>'Diogo Martins',
+Participant.create(
+    :name=>'Diogo Martins',
     :vegan=>false,
     :tshirt_size=>'S',
     :motor_difficulties=>'',
@@ -107,17 +127,19 @@ Participant.create(
     :allergies=>'Pó',
     :leader=>false,
     :phone=>'916582945',
+    :course=>'lei',
     :team_id=>1,
     :user_id=>2)
 
 Participant.create(
     :name=>'Joaquim Matias',
-    :vegan=>false,
+    :vegan=>true,
     :tshirt_size=>'M',
     :motor_difficulties=>'',
-    :allergies=>'Pó',
+    :allergies=>'Po',
     :leader=>false,
-    :phone=>'91487945',
+    :phone=>'914879451',
+    :course=>'lei',
     :team_id=>1,
     :user_id=>3)
 
@@ -131,6 +153,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'913587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>4)
 
@@ -142,6 +165,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'912587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>5)
 
@@ -153,6 +177,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'911587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>6)
 
@@ -164,10 +189,11 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'910587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>7)
 
-#participants team 3
+# #participants team 3
 
 Participant.create(
     :name=>'Pedro Martins',
@@ -177,6 +203,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'912587944',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>8)
 
@@ -188,6 +215,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'911587943',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>9)
 
@@ -199,10 +227,11 @@ Participant.create(
     :allergies=>'Leite',
     :leader=>false,
     :phone=>'910587942',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>10)
 
-#participants team 4
+# #participants team 4
 
 Participant.create(
     :name=>'Pedro Manso',
@@ -212,6 +241,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'912587941',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>11)
 
@@ -223,6 +253,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'911587940',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>12)
 
@@ -234,8 +265,11 @@ Participant.create(
     :allergies=>'Leite',
     :leader=>false,   
     :phone=>'910587939',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>13)
+
+puts "Success: Participant data loaded"
 
 
     TeamTheme.create(:id=>1,:team_id=>1,:themes_id=>1)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   get 'welcome/Index'
 
   # namespace :api do
