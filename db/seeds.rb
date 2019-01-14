@@ -4,7 +4,7 @@ require 'faker'
 
 Mentor.delete_all
 Participant.delete_all
-Themes.delete_all
+Theme.delete_all
 Team.delete_all
 User.delete_all
 Role.delete_all
@@ -26,10 +26,10 @@ Mentor.create(:id=>3,:name_mentor=>'Manuel Barros',:vegan=> true, :tshirt_size=>
 
 puts "Success: Mentor data loaded"
 
-Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
-Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
-Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
-puts "Success: Themes data loaded"
+Theme.create(:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
+Theme.create(:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
+Theme.create(:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
+puts "Success: Theme data loaded"
 
 
 Role.create(:id=>1, :name=>'admin')
@@ -71,17 +71,19 @@ Participant.create(
     :allergies=>'Pó',
     :leader=>false,
     :phone=>'916582945',
+    :course=>'lei',
     :team_id=>1,
     :user_id=>2)
 
 Participant.create(
     :name=>'Joaquim Matias',
-    :vegan=>false,
+    :vegan=>true,
     :tshirt_size=>'M',
     :motor_difficulties=>'',
-    :allergies=>'Pó',
+    :allergies=>'Po',
     :leader=>false,
-    :phone=>'91487945',
+    :phone=>'914879451',
+    :course=>'lei',
     :team_id=>1,
     :user_id=>3)
 
@@ -95,6 +97,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'913587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>4)
 
@@ -106,6 +109,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'912587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>5)
 
@@ -117,6 +121,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'911587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>6)
 
@@ -128,6 +133,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'910587945',
+    :course=>'lei',
     :team_id=>2,
     :user_id=>7)
 
@@ -141,6 +147,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'912587944',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>8)
 
@@ -152,6 +159,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'911587943',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>9)
 
@@ -163,6 +171,7 @@ Participant.create(
     :allergies=>'Leite',
     :leader=>false,
     :phone=>'910587942',
+    :course=>'lei',
     :team_id=>3,
     :user_id=>10)
 
@@ -176,6 +185,7 @@ Participant.create(
     :allergies=>'',
     :leader=>true,
     :phone=>'912587941',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>11)
 
@@ -187,6 +197,7 @@ Participant.create(
     :allergies=>'',
     :leader=>false,
     :phone=>'911587940',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>12)
 
@@ -198,14 +209,22 @@ Participant.create(
     :allergies=>'Leite',
     :leader=>false,   
     :phone=>'910587939',
+    :course=>'lei',
     :team_id=>4,
     :user_id=>13)
 
 puts "Success: Participant data loaded"
 
 
+<<<<<<< HEAD
 TeamTheme.create(:id=>1,:team_id=>1,:themes_id=>1)
 TeamTheme.create(:id=>2,:team_id=>1,:themes_id=>2)
 TeamTheme.create(:id=>3,:team_id=>2,:themes_id=>3)
 TeamTheme.create(:id=>4,:team_id=>3,:themes_id=>1)
+=======
+    TeamTheme.create(:team_id=>1,:theme_id=>1)
+    TeamTheme.create(:team_id=>1,:theme_id=>2)
+    TeamTheme.create(:team_id=>2,:theme_id=>3)
+    TeamTheme.create(:team_id=>3,:theme_id=>1)
+>>>>>>> 9bf311c218436c35b96dd66fd8783aa73fb4b89d
 puts "Sucess: TeamTheme data loaded"

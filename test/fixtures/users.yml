@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  password: MyString
-  photo: MyString
+  id: 1
+  email: jose@ipt.pt
+  password_digest: 123
+  photo: 
 
-two:
-  email: MyString
-  password: MyString
-  photo: MyString
+# two:
+#   email: MyString
+#   password_digest: MyString
+#   photo: MyString
+

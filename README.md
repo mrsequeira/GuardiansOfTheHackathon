@@ -1,3 +1,15 @@
+[![Build Status](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon.svg?branch=master)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon)
+[![Test Coverage](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon/badges/coverage.svg)](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon)
+[![Issue Count](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon/badges/issue_count.svg)](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/mrsequeira/GuardiansOfTheHackathon)
+[![GitHub issues](https://img.shields.io/github/issues/mrsequeira/GuardiansOfTheHackathon.svg?style=plastic)](https://github.com/mrsequeira/GuardiansOfTheHackathon/issues)
+[![security](https://hakiri.io/github/mrsequeira/GuardiansOfTheHackathon/master.svg)](https://hakiri.io/github/mrsequeira/GuardiansOfTheHackathon/master)
+ [![Known Vulnerabilities](https://snyk.io/test/github/mrsequeira/GuardiansOfTheHackathon/badge.svg)](https://snyk.io/test/github/mrsequeira/GuardiansOfTheHackathon) 
+
+[![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon?branch=master)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
+[![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
+
+gfg
 # Guardians of the Hackathon 
 * Description of the project here
 
@@ -73,6 +85,7 @@ https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2
 ### If vagrant ask you the password
 Password will be: vagrant
 https://laracasts.com/discuss/channels/general-discussion/fortgot-vagrant-password?page=1
+<<<<<<< HEAD
 
 To add:
 * Services (job queues, cache servers, search engines, etc.)
@@ -87,3 +100,5 @@ https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-
 
 ### Merge development branch before doing pull request
 git pull origin development
+=======
+>>>>>>> 9bf311c218436c35b96dd66fd8783aa73fb4b89d

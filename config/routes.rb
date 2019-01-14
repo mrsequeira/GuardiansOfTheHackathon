@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       resources :user_roles
       resources :events 
       resources :participants
+      resources :mentors
+      resources :teams
+      resources :themes
+      resources :team_themes
       
       post 'authenticate', to: 'authentication#authenticate' #create
       post 'login', to: 'authentication#login'
@@ -20,5 +24,4 @@ Rails.application.routes.draw do
     
     end  
   end
-
 end
