@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # namespace :api do
     # namespace :v1 do
     resources :participants
+      resources :mentors
     # end
     resources :teams
     resources :themes
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
   # end
 
   root 'participants#index'
+  #root 'mentors#index'
 end
