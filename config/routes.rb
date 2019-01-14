@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   #   namespace :v1 do
       resources :participants
       resources :mentors
-  #   end
+    resources :teams
+    resources :themes
+    resources :team_themes
+    # end
   # end
 
   root 'participants#index'
