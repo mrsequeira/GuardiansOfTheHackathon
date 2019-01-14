@@ -17,7 +17,7 @@ require 'faker'
 
 Mentor.delete_all
 Participant.delete_all
-Themes.delete_all
+Theme.delete_all
 Team.delete_all
 User.delete_all
 Role.delete_all
@@ -49,10 +49,10 @@ Mentor.create(:id=>3,:name_mentor=>'Manuel Barros',:vegan=> true, :tshirt_size=>
 
 puts "Success: Mentor data loaded"
 
-Themes.create(:id=>1,:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
-Themes.create(:id=>2,:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
-Themes.create(:id=>3,:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
-puts "Success: Themes data loaded"
+Theme.create(:name_theme=>'turismo',:description_theme=>'Descrição do tema turismo')
+Theme.create(:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
+Theme.create(:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')
+puts "Success: Theme data loaded"
 
 
 
@@ -272,8 +272,8 @@ Participant.create(
 puts "Success: Participant data loaded"
 
 
-    TeamTheme.create(:id=>1,:team_id=>1,:themes_id=>1)
-    TeamTheme.create(:id=>2,:team_id=>1,:themes_id=>2)
-    TeamTheme.create(:id=>3,:team_id=>2,:themes_id=>3)
-    TeamTheme.create(:id=>4,:team_id=>3,:themes_id=>1)
+    TeamTheme.create(:team_id=>1,:theme_id=>1)
+    TeamTheme.create(:team_id=>1,:theme_id=>2)
+    TeamTheme.create(:team_id=>2,:theme_id=>3)
+    TeamTheme.create(:team_id=>3,:theme_id=>1)
 puts "Sucess: TeamTheme data loaded"
