@@ -2,13 +2,13 @@
 
 one:
   email: admin@ipt.pt
-  password_digest: <%= BCrypt::Password.create('adminpwd') %>
+  password_digest: "$2a$10$/SG/eBzIKcLhTyIZc3hJcuU/18FOQ/qjqeYzcRrxahFqI42SUym76" # adminpwd
   email_confirmed: true
   photo: 
 
 two:
-  email: jose@ipt.pt
-  password_digest: <%= BCrypt::Password.create('josepwd') %>
+  email: jose@ipt.pt # pwd gerada com BCrypt::Password.create('josepwd')
+  password_digest: "$2a$10$Lv9x0ZpOI.gingQl5xXqH.m2tJokToaItdK.lmLuiIePN0d7qjZeO" # josepwd
   email_confirmed: true
   photo: 
 
