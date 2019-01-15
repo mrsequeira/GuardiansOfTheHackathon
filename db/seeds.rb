@@ -19,7 +19,6 @@ u = User.create(:email => "admin@cityhack.ipt.pt", :password => "chumbados", :em
 u.roles << Role.find_by(name: 'admin')
 puts "Success: Roles and Admin data loaded"
 
-
 Theme.create(:name_theme=>'Turismo',:description_theme=>'Descrição do tema turismo')
 Theme.create(:name_theme=>'Ambiente',:description_theme=>'Descrição do tema Ambient')
 Theme.create(:name_theme=>'Mobilidade',:description_theme=>'Descrição do tema mobolidade')

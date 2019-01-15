@@ -7,7 +7,7 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
    
-  set_fixture_class theme: Theme
+  #set_fixture_class theme: Theme
   fixtures :all
 
   # Add more helper methods to be used by all tests here...

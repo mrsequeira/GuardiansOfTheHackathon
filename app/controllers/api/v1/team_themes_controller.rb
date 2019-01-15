@@ -17,7 +17,7 @@ module Api
         @team_theme = TeamTheme.new(team_theme_params)
 
         if @team_theme.save
-          render :show, status: :created, location: @team_theme
+          render :show, status: :created, location: api_v1_team_theme_url(@team_theme)
         else
           render json: @team_theme.errors, status: :unprocessable_entity
         end
@@ -26,7 +26,7 @@ module Api
       # PUT /team_themes/1
       def update
         if @team_theme.update(team_theme_params)
-          render :show, status: :ok, location: @team_theme
+          render :show, status: :ok, location: api_v1_team_theme_url(@team_theme)
         else
           render json: @team_theme.errors, status: :unprocessable_entity
         end

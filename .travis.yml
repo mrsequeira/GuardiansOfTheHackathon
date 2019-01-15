@@ -22,4 +22,5 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 bundler_args: --binstubs=./bundler_stubs
 notifications:
+  on_change: never
   slack: cidadehackeada:OpMGiGS6BIflgpH5J4qj0grY
