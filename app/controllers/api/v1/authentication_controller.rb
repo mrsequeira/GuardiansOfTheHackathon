@@ -47,7 +47,7 @@ module Api
         if params[:email].blank? # check if email is present
           render json: {error: "Email not present"}
         end
-    
+        
         @user = User.find_by(email: params[:email]) # if present find user by email
         p @user
         if @user.present?
@@ -73,9 +73,9 @@ module Api
         # if params[:email].blank?
         #   return render json: {error: "Token not present"}
         # end
-    
+        
         user = User.find_by(reset_password_token: token)
-    
+        
         if user.present? && user.password_token_valid?
           if user.reset_password!(params[:password])
             render json: {status: "Password has been changed successfully"}, status: :ok
@@ -109,7 +109,7 @@ module Api
           :email,
           :password,
           :password_confirmation
-        )
+          )
       end
 
     end

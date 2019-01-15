@@ -18,7 +18,7 @@ class UserRoleTest < ActiveSupport::TestCase
   end
 
   test "should save User_Role all columns" do
-    a=UserRole.new(role_id:1, user_id:1 )
+    a=UserRole.new(role_id:roles(:one).id , user_id: users(:two).id )
     assert a.save, "Can't be saved"
   end
 

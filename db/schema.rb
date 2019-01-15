@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_01_13_145247) do
-=======
 ActiveRecord::Schema.define(version: 2019_01_13_163202) do
->>>>>>> 9bf311c218436c35b96dd66fd8783aa73fb4b89d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,9 +104,9 @@ ActiveRecord::Schema.define(version: 2019_01_13_163202) do
   end
 
   add_foreign_key "participants", "teams"
-  add_foreign_key "participants", "users", on_delete: :nullify
+  add_foreign_key "participants", "users"
   add_foreign_key "team_themes", "teams"
-  add_foreign_key "team_themes", "themes", column: "themes_id"
-  add_foreign_key "user_roles", "roles", on_delete: :nullify
-  add_foreign_key "user_roles", "users", on_delete: :nullify
+  add_foreign_key "team_themes", "themes"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

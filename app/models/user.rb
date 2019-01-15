@@ -7,6 +7,10 @@ class User < ApplicationRecord
     validates :email, format: {with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/},  presence: true, :uniqueness => true
     validates :password, length: { minimum: 5,maximum: 69 }, presence: true
 
+    #isto podia estar melhor organizado com polimorfismo e chave fk deste
+    #lado mas fizeram assim portanto fica assim mesmo.
+    has_one :mentor
+    has_one :participant
     #private
     ########################
     ## Email confirmation

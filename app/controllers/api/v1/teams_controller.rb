@@ -1,4 +1,6 @@
-class TeamsController < ApplicationController
+module Api
+  module V1
+  	class TeamsController < ApplicationController
 	  
   	before_action :set_team, only: [:show, :update, :destroy]
 	
@@ -48,5 +50,7 @@ private
 
 	def team_params
       params.require(:team).permit(:name, :project, :description, :photo, :created_at, :updated_at)
+    end
+end
     end
 end

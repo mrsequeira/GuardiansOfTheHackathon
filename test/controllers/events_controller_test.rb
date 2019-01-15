@@ -5,32 +5,38 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     @event = events(:one)
   end
 
-  test "should get index" do
-    get events_url, as: :json
+  test "logged user should get index" do
+    token = login_admin
+    get api_v1_events_url, headers: { Authorization: token }, as: :json
     assert_response :success
   end
 
-  test "should create event" do
+  test "logged user should create event" do
+    token = login_admin
+    # byebug
     assert_difference('Event.count') do
-      post events_url, params: { event: { description: @event.description, name: @event.name } }, as: :json
+      post api_v1_events_url, headers: { Authorization: token }, params: { event: { description: @event.description, name: @event.name } }, as: :json
     end
 
     assert_response 201
   end
 
-  test "should show event" do
-    get event_url(@event), as: :json
+  test "logged user should show event" do
+    token = login_admin
+    get api_v1_event_url(@event), headers: { Authorization: token }, as: :json
     assert_response :success
   end
 
-  test "should update event" do
-    patch event_url(@event), params: { event: { description: @event.description, name: @event.name } }, as: :json
+  test "admin user should update event" do
+    token = login_admin
+    patch api_v1_event_url(@event), headers: { Authorization: token }, params: { event: { description: @event.description, name: @event.name } }, as: :json
     assert_response 200
   end
 
-  test "should destroy event" do
+  test "admin user should destroy event" do
+    token = login_admin
     assert_difference('Event.count', -1) do
-      delete event_url(@event), as: :json
+      delete api_v1_event_url(@event), headers: { Authorization: token }, as: :json
     end
 
     assert_response 204

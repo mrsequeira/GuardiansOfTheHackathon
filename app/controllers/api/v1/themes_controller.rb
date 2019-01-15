@@ -1,4 +1,6 @@
-class ThemesController < ApplicationController
+module Api
+  module V1
+  	class ThemesController < ApplicationController
 
   	before_action :set_theme, only: [:show, :update, :destroy]
 	
@@ -48,4 +50,7 @@ class ThemesController < ApplicationController
 		def theme_params
           params.require(:theme).permit(:name_theme, :description_theme)
         end
+end
+
+    end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   apipie
-  get 'welcome/Index'
+  get 'welcome/index'
 
   namespace :api do
     namespace :v1 do
@@ -12,9 +12,10 @@ Rails.application.routes.draw do
       resources :participants
       resources :mentors
       resources :teams
-      resources :themes
       resources :team_themes
+      resources :themes
       
+
       post 'authenticate', to: 'authentication#authenticate' #create
       post 'login', to: 'authentication#login'
       get '/:token/confirm_email/', :to => "authentication#confirm_email", as: 'confirm_email'

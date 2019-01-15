@@ -3,13 +3,13 @@ require 'test_helper'
 class MentorTest < ActiveSupport::TestCase
 
   test "should save Mentor with all columns" do
-    a=Mentor.new(name_mentor:"José", tshirt_size:"M", mentor_difficulties:"", mentor_allergies:"", theme_id:1)
+    a=Mentor.new(name_mentor:"José", tshirt_size:"M", mentor_difficulties:"", mentor_allergies:"", theme: themes(:teste), user: users(:one))
     assert a.save, "Can't be saved"
   end
   
   test "should save mentor without name and tshirt_size" do
-    a=Mentor.new(name_mentor: "Theme", tshirt_size:"M")
-    assert a.save, "Saved without  name and tshirt_size "
+    a=Mentor.new(name_mentor: "José Preto", tshirt_size:"M")
+    assert_not a.save, "Saved without  name and tshirt_size "
   end
 
   test "should not save mentor without tshirt_size" do
@@ -33,8 +33,8 @@ class MentorTest < ActiveSupport::TestCase
   end
   
   test "should save mentor just only with theme and tshirt_size" do
-    a=Mentor.new(name_mentor: "José Preto", tshirt_size:"M")
-    assert a.save, "Saved without  name and tshirt_size "
+    a=Mentor.new(theme_id: "1", tshirt_size:"M")
+    assert_not a.save, "Saved without  theme and tshirt_size "
   end
 
   test "should not mentor with name length 3" do

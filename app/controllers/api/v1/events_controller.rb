@@ -18,9 +18,9 @@ module Api
       # POST /events
       def create
         @event = Event.new(event_params)
-
+       # byebug
         if @event.save
-          render json: @event, status: :created, location: @event
+          render json: @event, status: :created, location: api_v1_event_url(@event)
         else
           render json: @event.errors, status: :unprocessable_entity
         end
@@ -29,7 +29,7 @@ module Api
       # PATCH/PUT /events/1
       def update
         if @event.update(event_params)
-          render json: @event
+          render json: api_v1_event_url(@event)
         else
           render json: @event.errors, status: :unprocessable_entity
         end

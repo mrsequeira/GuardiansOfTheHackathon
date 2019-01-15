@@ -1,4 +1,6 @@
-class ParticipantsController < ApplicationController
+module Api
+  module V1
+    class ParticipantsController < ApplicationController
 
   before_action :apipie_validations
 
@@ -88,4 +90,6 @@ class ParticipantsController < ApplicationController
       :allergies, :leader, :phone, :course, :team_id
     )
   end
+end
+    end
 end

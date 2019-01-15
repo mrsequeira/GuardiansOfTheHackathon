@@ -1,6 +1,8 @@
-class MentorsController < ApplicationController
+module Api
+  module V1
+    class MentorsController < ApplicationController
     #before a action find a id
-  before_action :set_mentor, only: [:show, :update, :destroy]
+    before_action :set_mentor, only: [:show, :update, :destroy]
 
   # GET /mentors
   def index
@@ -38,8 +40,8 @@ class MentorsController < ApplicationController
 
 
   def destroy
-      @mentor.destroy
-      render json: {status: 'Sucess', message:'Deleted mentor', data:@mentor},status: :ok
+    @mentor.destroy
+    render json: {status: 'Sucess', message:'Deleted mentor', data:@mentor},status: :ok
   end
 
   private
@@ -51,4 +53,6 @@ class MentorsController < ApplicationController
   def mentor_params
     params.require(:mentor).permit(:name_mentor, :vegan, :tshirt_size, :mentor_difficulties, :mentor_allergies, :theme_id, :user_id)
   end
+end
+end
 end
