@@ -9,6 +9,6 @@ class UserMailer < ApplicationMailer
 
     def forgot_password(user)
         @user = user
-        mail(:to => "#{user}", :subject => "Forgot password")
+        mail(:to => "#{user.email}", :subject => "Forgot password")
     end
 end

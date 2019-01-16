@@ -16,10 +16,10 @@ Rails.application.routes.draw do
       resources :themes
       
 
-      post 'authenticate', to: 'authentication#authenticate' #create
+      post 'register', to: 'authentication#authenticate' 
       post 'login', to: 'authentication#login'
       get '/:token/confirm_email/', :to => "authentication#confirm_email", as: 'confirm_email'
-      
+
       post 'forgot', :to => "authentication#forgot"
       post '/:token/reset/', :to => "authentication#reset"
     

@@ -4,6 +4,7 @@ module Api
 
       skip_before_action :authenticate_request #actions aren't supposed to be authenticated
       
+
       ########################
       ## Register
       ## next version this will be transfered to user controller!!!
@@ -22,9 +23,21 @@ module Api
           end
           render json: { sucess: "Successfully registered, confirm your email address!" }, status: :authorized 
         else
-          render json: { error: "This email already exists" }, status: :unauthorized
+          render json: @user.errors, status: :unprocessable_entity
         end
       end
+
+      ########################
+      ## Login(obtain jwt)
+      ########################
+      def login
+        command = AuthenticateUser.call(params[:email], params[:password]) 
+        if command.success?
+          render json: { auth_token: command.result }
+        else
+          render json: { error: command.errors }, status: :unauthorized
+        end
+      end 
 
 
       ########################
@@ -44,12 +57,11 @@ module Api
       ## REQUEST forgot password
       ###########################
       def forgot
-        if params[:email].blank? # check if email is present
-          render json: {error: "Email not present"}
-        end
+        # if params[:email].blank? # check if email is present
+        #   render json: {error: "Email not present"}
+        # end
         
         @user = User.find_by(email: params[:email]) # if present find user by email
-        p @user
         if @user.present?
           @user.generate_password_token! # generate pass token
           begin
@@ -57,9 +69,9 @@ module Api
           rescue  Exception => e
             logger.warn "email delivery error = #{e}"
           end
-          render json: {status: "We sended you a email to change the pasword!"}, status: :ok
+          return render json: {status: "We sended you a email to change the pasword!"}, status: :ok
         else
-          render json: {error: ["Email address not found. Please check and try again."]}, status: :not_found
+          return render json: {error: ["Email address not found. Please check and try again."]}, status: :not_found
         end
       end
 
@@ -87,18 +99,6 @@ module Api
         end
       end
 
-
-      ########################
-      ## Login(obtain jwt)
-      ########################
-      def login
-        command = AuthenticateUser.call(params[:email], params[:password]) 
-        if command.success?
-          render json: { auth_token: command.result }
-        else
-          render json: { error: command.errors }, status: :unauthorized
-        end
-      end 
 
 
       private

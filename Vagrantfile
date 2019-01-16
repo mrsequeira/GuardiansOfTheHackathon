@@ -6,7 +6,7 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 unless File.file?('config/master.key')
-  puts "You are missing the config/master.key!"
+  puts "You are missing the config/master.key!" # Love this feature xD
   exit
 end
 
@@ -34,6 +34,7 @@ Vagrant.configure("2") do |config|
     bundle install
     rails db:create
     rails db:migrate
+    rails db:seed
   SHELL
 
 end

@@ -37,6 +37,9 @@ rails g scaffold_controller <name> # generate controller for a certain model
 
 ## Connect to postgresSQL
 ```bash
+sudo -su postgres 
+psql  -d vagrant_development -c  "SELECT * FROM users;"
+OR
 sudo -su postgres
 psql
 \l #list all of the tables, views, and sequences in the database
@@ -51,20 +54,41 @@ bundle exec erd #It will save a pdf file on root directory
 ```
 
 ## JWT auth: 
-Advise: Use Postman or... use the stone age way
+Advise: Use Postman or... use the stone age way as described:(can be util for frontend request using axios or fetch)
+###  Create a user:
 ```bash
-# Create a user:
-http://localhost:3000/api/v1/authenticate/
-# Obatin JWT (this was divided for security reasons)
-http://localhost:3000/api/v1/login/
+1. http://localhost:3000/api/v1/register/
+	body example(json format):
+	{
+		"email": "example@ipt.pt",
+		"password" : "example"
+	}
+2. Sended email confirmation
+3. http://localhost:3000/api/v1/login/ # Obatin JWT (this was divided for security reasons)
+	body example(json format):
+	{
+		"email": "example@ipt.pt",
+		"password" : "example"
+	}
+```
+### Forgot password(need email):
+```bash
+1. http://localhost:3000/api/v1/forgot/
+2. Sended email to reset password
+3. http://localhost:3000/api/v1/reset/
+	body example(json format):
+	{
+		"password" : "newexample"
+	}
+```
 
-body example(json format):
-{
-	"email": "example@ipt.pt",
-	"password" : "example"
-}
-#forgot password(need email)
-http://localhost:3000/api/v1/forgot/
+### Requests for routes needing authorization:
+```bash
+http://localhost:3000/api/v1/participants/
+	body example(json format):
+	{
+		"Authorization" : "Bearer <tokenhere>"
+	}
 ```
 
 ## New aproach to use credentials on rails version >5.2
