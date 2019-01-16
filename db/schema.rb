@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 2019_01_13_163202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mentors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,6 +97,10 @@ ActiveRecord::Schema.define(version: 2019_01_13_163202) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "email_confirmed", default: false
+    t.string "confirm_token"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   add_foreign_key "participants", "teams"

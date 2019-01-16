@@ -1,10 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  email: jose@ipt.pt
-  password_digest: 123
+  email: admin@ipt.pt
+  password_digest: <%= BCrypt::Password.create('adminpwd') %> # adminpwd
+  email_confirmed: true
   photo: 
+
+two:
+  email: jose@ipt.pt # pwd gerada com BCrypt::Password.create('josepwd')
+  password_digest: <%= BCrypt::Password.create('josepwd') %> # josepwd
+  email_confirmed: true
+  photo: 
+
 
 # two:
 #   email: MyString

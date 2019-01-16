@@ -3,7 +3,7 @@ require 'test_helper'
 class MentorTest < ActiveSupport::TestCase
 
   test "should save Mentor with all columns" do
-    a=Mentor.new(name_mentor:"José", tshirt_size:"M", mentor_difficulties:"", mentor_allergies:"", theme_id:1)
+    a=Mentor.new(name_mentor:"José", tshirt_size:"M", mentor_difficulties:"", mentor_allergies:"", theme: themes(:teste), user: users(:one))
     assert a.save, "Can't be saved"
   end
   
