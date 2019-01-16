@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'welcome/Index'
 
   # namespace :api do
-  #   namespace :v1 do
-      resources :participants
+    # namespace :v1 do
+    resources :participants
       resources :mentors
+    # end
     resources :teams
     resources :themes
     resources :team_themes

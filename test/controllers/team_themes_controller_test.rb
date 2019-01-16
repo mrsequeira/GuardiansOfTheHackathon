@@ -12,7 +12,7 @@ class TeamThemesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create team_theme" do
     assert_difference('TeamTheme.count') do
-      post team_themes_url, params: { team_theme: {  } }, as: :json
+      post team_themes_url, params: { team_theme: {team_id: teams(:one).id,theme_id: theme(:teste).id} }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class TeamThemesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update team_theme" do
-    patch team_theme_url(@team_theme), params: { team_theme: {  } }, as: :json
+    patch team_theme_url(@team_theme), params: { team_theme: { team_id: teams(:one).id,theme_id: theme(:teste).id}  }, as: :json
     assert_response 200
   end
 
@@ -33,6 +33,6 @@ class TeamThemesControllerTest < ActionDispatch::IntegrationTest
       delete team_theme_url(@team_theme), as: :json
     end
 
-    assert_response 204
+    assert_response 200
   end
 end
