@@ -9,6 +9,10 @@
 [![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon?branch=master)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
 [![Build history](https://buildstats.info/travisci/chart/mrsequeira/GuardiansOfTheHackathon)](https://travis-ci.org/mrsequeira/GuardiansOfTheHackathon/builds)
 
+### Backend:
+[![Heroku](https://heroku-badge.herokuapp.com/?app=guardianshackatum)](https://guardianshackatum.herokuapp.com/api/v1/)
+
+
 # Guardians of the Hackathon 
 * Description of the project here
 
