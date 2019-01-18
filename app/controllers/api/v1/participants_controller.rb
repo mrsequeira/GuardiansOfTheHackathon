@@ -8,8 +8,8 @@ module Api
   before_action :set_participant, only: [:show, :update, :destroy]
   
   resource_description do
-    short 'APIpie for model participants'
-    description 'This api its build to project called Guardians of Hackton to subject called Engenharia Software oriented by Renato Panda'
+    short 'Documentation APIpie for model participants'
+    description 'Model of participants who got a account on cityhack'
     formats ['json']
     # param :id, Fixnum, :desc => "Participant ID", :required => true
     error 404, "Missing"
@@ -35,20 +35,20 @@ module Api
 
 
   # GET /participants
-  api :GET, '/participants' , 'Get all participants'
+  api :GET, '/api/v1/participants' , 'Get all participants'
   param_group :participant
   def index
     @participants = Participant.all
   end
 
   #GET /participant/id
-  api :GET, '/participants/:id', 'Get participant'
+  api :GET, 'api/v1/participants/:id', 'Get a single participant'
   param_group :participant
   def show
   end
 
   # POST /participants
-  api :POST, '/participants', 'Create a new participant'
+  api :POST, 'api/v1/participants', 'Create a new participant'
   param_group :participant
   def create
     @participant = Participant.new(participant_params)
@@ -60,7 +60,7 @@ module Api
   end
 
   #PUT /participants/id
-  api :PUT, '/participants/:id' , 'Update a new participant'
+  api :PUT, 'api/v1/participants/:id' , 'Update a participant'
   param_group :participant
   def update
     if @participant.update(participant_params)
@@ -71,7 +71,7 @@ module Api
   end
 
   #DELETE /participants/id
-  api :DELETE, '/participants/:id' , 'Delete a new participant'
+  api :DELETE, 'api/v1/participants/:id' , 'Delete a participant'
   param_group :participant
   def destroy
       @participant.destroy
