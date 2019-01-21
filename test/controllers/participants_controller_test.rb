@@ -2,37 +2,42 @@ require 'test_helper'
 
 class ParticipantsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @participant = participants(:one)
+    @participant = participants(:miguel)
   end
 
   test "should get index" do
-    get participants_url, as: :json
+    token = login_admin
+    get api_v1_participants_url, headers: { Authorization: token }, as: :json
     assert_response :success
   end
 
   test "should create participant" do
+    token = login_admin
     assert_difference('Participant.count') do
-      post participants_url, params: { participant: { "name": "Miguel Silva", "vegan": "true", "tshirt_size": "L", "motor_difficulties": "None", "allergies": "None", "leader": false, "phone": "123456788", "course": "Informatica", "team_id": teams(:one).id, "user_id": users(:one).id } }, as: :json
+      post api_v1_participants_url, headers: { Authorization: token }, params: { participant: { "name": "Miguel Silva", "vegan": "true", "tshirt_size": "L", "motor_difficulties": "None", "allergies": "None", "leader": "false", "phone": "123456788", "course": "Informatica", "team_id": teams(:one).id, "user_id": users(:two).id } }, as: :json
     end
 
-    assert_response 201
+    assert_response 200
   end
 
   test "should show participant" do
-    get participant_url(@participant), as: :json
+    token = login_admin
+    get api_v1_participant_url(@participant), headers: { Authorization: token }, as: :json
     assert_response :success
   end
 
   test "should update participant" do
-    patch participant_url(@participant), params: { participant: { "name": "Miguel Silva", "vegan": "true", "tshirt_size": "L", "motor_difficulties": "None", "allergies": "None", "leader": false, "phone": "123456788", "course": "Informatica", "team_id": teams(:one).id, "user_id": users(:one).id } }, as: :json
+    token = login_admin
+    patch api_v1_participant_url(@participant), headers: { Authorization: token }, params: { participant: { "name": "Miguel Silva", "vegan": "true", "tshirt_size": "L", "motor_difficulties": "None", "allergies": "None", "leader": "false", "phone": "123456788", "course": "Informatica", "team_id": teams(:one).id, "user_id": users(:two).id } }, as: :json
     assert_response 200
   end
 
   test "should destroy participant" do
+    token = login_admin
     assert_difference('Participant.count', -1) do
-      delete participant_url(@participant), as: :json
+      delete api_v1_participant_url(@participant), headers: { Authorization: token }, as: :json
     end
 
-    assert_response 204
+    assert_response 200
   end
 end

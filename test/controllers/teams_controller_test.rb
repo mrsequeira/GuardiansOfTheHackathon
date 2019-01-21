@@ -6,33 +6,38 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get teams_url, as: :json
+    token = login_admin
+    get api_v1_teams_url, headers: { Authorization: token }, as: :json
     assert_response :success
   end
 
   test "should create team" do
+    token = login_admin
     assert_difference('Team.count') do
-      post teams_url, params: { team: { "name": "teste", "project": "teste", "description": "Teste descricao", "photo": "teste.jpg" } }, as: :json
+      post api_v1_teams_url, headers: { Authorization: token }, params: { team: { "name": "teste", "project": "teste", "description": "Teste descricao", "photo": "teste.jpg" } }, as: :json
     end
 
     assert_response 201
   end
 
   test "should show team" do
-    get team_url(@team), as: :json
+    token = login_admin
+    get api_v1_team_url(@team), headers: { Authorization: token }, as: :json
     assert_response :success
   end
 
   test "should update team" do
-    patch team_url(@team), params: { team: { "name": "teste", "project": "teste", "description": "Teste descricao", "photo": "teste.jpg" } }, as: :json
+    token = login_admin
+    patch api_v1_team_url(@team), headers: { Authorization: token }, params: { team: { "name": "teste", "project": "teste", "description": "Teste descricao", "photo": "teste.jpg" } }, as: :json
     assert_response 200
   end
 
   test "should destroy team" do
+    token = login_admin
     assert_difference('Team.count', -1) do
-      delete team_url(@team), as: :json
+      delete api_v1_team_url(@team), headers: { Authorization: token }, as: :json
     end
 
-    assert_response 204
+    assert_response 200
   end
 end

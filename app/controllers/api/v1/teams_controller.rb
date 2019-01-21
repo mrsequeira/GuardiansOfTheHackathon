@@ -51,7 +51,7 @@ module Api
 		@team = Team.new(team_params)
 
 		if @team.save
-			render json: @team, status: :created, location: @team
+			render json: @team, status: :created, location: api_v1_team_theme_url(@team)
 		else
 			render json: @team.errors, status: :unprocessable_entity
 		end
@@ -62,7 +62,7 @@ module Api
 	param_group :team
 	def update
 		if @team.update(team_params)
-          render json: {status: 'Sucess', message:'Updated team', data:@team},status: :ok
+          render json: {status: 'Sucess', message:'Updated team', data:api_v1_team_theme_url(@team)},status: :ok
 	    else
 	      render json: {status: 'Error', message:'Team not updated', data:@team.errors},status: :unprocessable_entity
 	    end
