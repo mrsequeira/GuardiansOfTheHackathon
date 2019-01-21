@@ -12,7 +12,7 @@ class MentorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create mentor" do
     assert_difference('Mentor.count') do
-      post mentors_url, params: { mentor: { "name_mentor": "José","vegan": true,"tshirt_size": "L","mentor_difficulties": "nenhuma","mentor_allergies": "Asma","user_id": users(:one).id,"theme_id": theme(:teste).id } }, as: :json
+      post mentors_url, params: { mentor: { "name_mentor": "José","vegan": true,"tshirt_size": "L","mentor_difficulties": "nenhuma","mentor_allergies": "Asma","user_id": 1,"theme_id": 1 } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class MentorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update mentor" do
-    patch mentor_url(@mentor), params: { mentor: {  "name_mentor": "José","vegan": true,"tshirt_size": "L","mentor_difficulties": "nenhuma","mentor_allergies": "Asma","user_id": users(:one).id,"theme_id": theme(:teste).id  } }, as: :json
+    patch mentor_url(@mentor), params: { mentor: {  "name_mentor": "José","vegan": true,"tshirt_size": "L","mentor_difficulties": "nenhuma","mentor_allergies": "Asma","user_id": 1,"theme_id": 1  } }, as: :json
     assert_response 200
   end
 
