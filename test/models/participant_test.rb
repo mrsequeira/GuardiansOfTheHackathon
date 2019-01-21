@@ -6,7 +6,7 @@ class ParticipantTest < ActiveSupport::TestCase
 
     p=Participant.new(name:"xuxa",vegan:false, tshirt_size:"XL", 
       motor_difficulties:"",allergies:"", leader:false, phone:"916488198",
-      course:"LEI", user_id:1, team_id:1
+      course:"LEI", user: users(:two), team: teams(:one)
     )
     assert p.save, "Can't be saved"
   end

@@ -22,9 +22,9 @@ class UserTest < ActiveSupport::TestCase
     assert_not a.save, "Saved without  name and tshirt_size "
   end
 
-  test "should save user with password and email " do
-    a=User.new(email:"joao@ipt.pt", password:"123")
-    assert a.save, "Saved without  name and tshirt_size "
+  test "should not save user with small password" do
+    a=User.new(email:"joao@ipt.pt", password:"1234")
+    assert_not a.save, "Saved without name and tshirt_size "
   end
   
 end

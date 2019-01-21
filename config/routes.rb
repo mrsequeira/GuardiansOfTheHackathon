@@ -1,18 +1,28 @@
 Rails.application.routes.draw do
   apipie
-  get 'welcome/Index'
+  get 'welcome/index'
 
-  # namespace :api do
-    # namespace :v1 do
-    resources :participants
+  namespace :api do
+    namespace :v1 do
+      # Controller resources
+      resources :users
+      resources :roles
+      resources :user_roles
+      resources :events 
+      resources :participants
       resources :mentors
-    # end
-    resources :teams
-    resources :themes
-    resources :team_themes
-    # end
-  # end
+      resources :teams
+      resources :team_themes
+      resources :themes
+      
 
-  root 'participants#index'
-  #root 'mentors#index'
+      post 'register', to: 'authentication#authenticate' 
+      post 'login', to: 'authentication#login'
+      get '/:token/confirm_email/', :to => "authentication#confirm_email", as: 'confirm_email'
+
+      post 'forgot', :to => "authentication#forgot"
+      post '/:token/reset/', :to => "authentication#reset"
+    
+    end  
+  end
 end
