@@ -12,6 +12,11 @@ two:
   email_confirmed: true
   photo: 
 
+xpto:
+  email: jose@ipt.pt # pwd gerada com BCrypt::Password.create('josepwd')
+  password_digest: <%= BCrypt::Password.create('josepwd') %> # josepwd
+  email_confirmed: true
+  photo: 
 
 # two:
 #   email: MyString
