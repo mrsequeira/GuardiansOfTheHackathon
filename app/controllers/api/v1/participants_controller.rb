@@ -30,6 +30,8 @@ module Api
     param :allergies, String, :desc => "Allergies of participant"
     param :phone, String, :desc => "Phone of participant"
     param :leader, String, :desc => "Leader of Team"
+    param :team_id, Integer, :desc => "Belongs to Team"
+    param :user_id, Integer, :desc => "User"
   end
 
 
@@ -87,7 +89,7 @@ module Api
   def participant_params
     params.require(:participant).permit(
       :name,:vegan, :tshirt_size, :motor_difficulties,
-      :allergies, :leader, :phone, :course, :team_id
+      :allergies, :leader, :phone, :course, :team_id, :user_id
     )
   end
 end
