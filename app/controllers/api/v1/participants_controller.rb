@@ -40,7 +40,7 @@ module Api
   api :GET, '/api/v1/participants' , 'Get all participants'
   param_group :participant
   def index
-    @participants = Participant.all
+    @participants = Participant.includes(:user).all
   end
 
   #GET /participant/id

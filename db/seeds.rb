@@ -32,16 +32,16 @@ Team.create(:name=>'gaymerstetris', :project=>'forumTomar',:description=>'Uma ap
 teams = Team.all
 puts "Success: Team data loaded"
 
-mentors.times do
-    u = User.create(:email=>Faker::Internet.unique.email, :password=>Faker::Internet.unique.password, :photo=>'', :email_confirmed => true)
+mentors.times do |i|
+    u = User.create(:email=>Faker::Internet.unique.email, :password=>Faker::Internet.unique.password, :photo=>"mentor_#{i}.jpg", :email_confirmed => true)
     u.roles << roles.sample
     Mentor.create(:name_mentor=> Faker::Name.name ,:vegan=> vegan.sample, :tshirt_size=>tshirt.sample,:mentor_difficulties=> difficulties.sample ,:mentor_allergies=> allergies.sample ,:user => u ,:theme=> themes.sample)
 end
 puts "Success: Mentors created"
 
 normal_role = Role.find_by(name: "normal")
-participants.times do
-    u = User.create(:email=>Faker::Internet.unique.email, :password=>Faker::Internet.unique.password, :photo=>'')
+participants.times do |i|
+    u = User.create(:email=>Faker::Internet.unique.email, :password=>Faker::Internet.unique.password, :photo=>"participant_#{i}.jpg")
     u.roles << normal_role
     Participant.create(
         :name=> Faker::Name.name,
