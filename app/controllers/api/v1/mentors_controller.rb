@@ -34,7 +34,7 @@ module Api
   api :GET, '/api/v1/mentors' , 'Get all Mentors'
   param_group :mentor  
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.includes(:user).all
     
     #render json: @mentors
     

@@ -30,6 +30,8 @@ module Api
     param :allergies, String, :desc => "Allergies of participant"
     param :phone, String, :desc => "Phone of participant"
     param :leader, String, :desc => "Leader of Team"
+    param :team_id, Integer, :desc => "Belongs to Team"
+    param :user_id, Integer, :desc => "User"
   end
 
 
@@ -38,7 +40,7 @@ module Api
   api :GET, '/api/v1/participants' , 'Get all participants'
   param_group :participant
   def index
-    @participants = Participant.all
+    @participants = Participant.includes(:user).all
   end
 
   #GET /participant/id

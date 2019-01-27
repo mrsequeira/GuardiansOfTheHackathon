@@ -13,6 +13,10 @@
 [![Heroku](https://heroku-badge.herokuapp.com/?app=guardianshackatum)](https://guardianshackatum.herokuapp.com/api/v1/)
 
 
+### Frontend:
+[![Heroku](https://heroku-badge.herokuapp.com/?app=guardiansfrontend)](https://guardiansfrontend.herokuapp.com)
+
+
 # Guardians of the Hackathon 
 * Description of the project here
 
