@@ -13,15 +13,10 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def login_admin
     post api_v1_login_url, params: { email: "admin@ipt.pt", password: "adminpwd" }, as: :json
-    #byebug
-    puts response.status
   	if response.status == 200
   		JSON.parse(response.body)["auth_token"]
     else
-      
   		nil
     end
-    #byebug
   end
-
 end
