@@ -29,15 +29,12 @@ module Api
       param_group :role
       def index
         @roles = Role.all
-
-        render json: @roles
       end
 
       # GET /roles/1
       api :GET, '/api/v1/roles/:id' , 'Get a single Role'
       param_group :role
       def show
-        render json: @role
       end
 
       # POST /roles
@@ -47,9 +44,9 @@ module Api
         @role = Role.new(role_params)
 
         if @role.save
-          render json: @role, status: :created, location: @role
+          render json: {status: 'Sucess', message:'Saved role', data:api_v1_team_theme_url(@role)},status: :ok
         else
-          render json: @role.errors, status: :unprocessable_entity
+          render json: {status: 'Error', message:'Role not saved', data:@role.errors},status: :unprocessable_entity
         end
       end
 
@@ -58,9 +55,9 @@ module Api
       param_group :role
       def update
         if @role.update(role_params)
-          render json: @role
+          render json: {status: 'Sucess', message:'Updated role', data:api_v1_team_theme_url(@role)},status: :ok
         else
-          render json: @role.errors, status: :unprocessable_entity
+          render json:{status: 'Error', message:'Role not updated', data:@role.errors},status: :unprocessable_entity
         end
       end
 
@@ -69,9 +66,8 @@ module Api
       param_group :role
       def destroy
         @role.destroy
-        
-        @roles = Role.all
-        render json: @roles
+        render json:{status: 'Sucess', message:'Deleted Role', data:@role},status: :ok
+
       end
 
       private
@@ -82,7 +78,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def role_params
-          params.permit(:name)
+          params.require(:role).permit(:name)
         end
     end
   end

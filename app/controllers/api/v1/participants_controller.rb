@@ -55,7 +55,7 @@ module Api
   def create
     @participant = Participant.new(participant_params)
     if @participant.save
-      render json: {status: 'Sucess', message:'Saved participant', data:@participant},status: :ok
+      render json: {status: 'Sucess', message:'Saved participant', data:api_v1_team_theme_url(@participant)},status: :ok
     else
       render json: {status: 'Error', message:'Participant not saved', data:@participant.errors},status: :unprocessable_entity
     end
@@ -66,7 +66,7 @@ module Api
   param_group :participant
   def update
     if @participant.update(participant_params)
-      render json: {status: 'Sucess', message:'Updated participant', data:@participant},status: :ok
+      render json: {status: 'Sucess', message:'Updated participant', data:api_v1_team_theme_url(@participant)},status: :ok
     else
       render json: {status: 'Error', message:'Participant not updated', data:@participant.errors},status: :unprocessable_entity
     end

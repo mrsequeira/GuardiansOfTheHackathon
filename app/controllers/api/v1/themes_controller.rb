@@ -49,7 +49,7 @@ module Api
 		@theme =Theme.new(theme_params)
 
 		if @theme.save
-			render json: @theme, status: :created, location: @theme
+			render json: @theme, status: :created, location: api_v1_team_theme_url(@theme)
 	    else
 	      render json: @theme.errors, status: :unprocessable_entity
 	    end
@@ -60,7 +60,7 @@ module Api
   param_group :theme
 	def update
 		if @theme.update(theme_params)
-          render json: {status: 'Sucess', message:'Saved theme', data:@theme},status: :ok
+          render json: {status: 'Sucess', message:'Saved theme', data:api_v1_team_theme_url(@theme)},status: :ok
 	    else
 	      render json: {status: 'Error', message:'Theme not saved', data:@theme.errors},status: :unprocessable_entity
 	    end

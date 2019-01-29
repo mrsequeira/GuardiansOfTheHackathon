@@ -3,5 +3,8 @@
 one:
   name: 'admin'
 
-one:
+two:
   name: 'normal'
+
+three:
+  name: 'xpto'

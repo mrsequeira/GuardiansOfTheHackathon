@@ -10,6 +10,7 @@ henrique:
   phone: 123456789
   course: Informatica
   team: one
+  user: two
 
 miguel:
   name: Miguel Silva
@@ -21,6 +22,7 @@ miguel:
   phone: 123456788
   course: Informatica
   team: one
+  user: one
 
 plaka:
   name: Diogo Martins
@@ -32,5 +34,6 @@ plaka:
   phone: 123456788
   course: Informatica
   team: two
+  user: two
 
 

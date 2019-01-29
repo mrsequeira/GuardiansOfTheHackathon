@@ -55,7 +55,7 @@ module Api
 
     if @mentor.save
       #render json: {status: 'Sucess', message:'Saved mentor', data:@mentor},status: :ok
-      render json: @mentor, status: :created, location: @mentor
+      render json: @mentor, status: :created, location: api_v1_team_theme_url(@mentor)
     else
       render json: @mentor.errors, status: :unprocessable_entity
       #render json: {status: 'Error', message:'mentor not saved', data:@mentor.errors},status: :unprocessable_entity
@@ -66,7 +66,7 @@ module Api
   param_group :mentor  
   def update
     if @mentor.update(mentor_params)
-      render json: {status: 'SUCCESS', message:'Updated mentor', data:@mentor},status: :ok
+      render json: {status: 'SUCCESS', message:'Updated mentor', data:api_v1_team_theme_url(@mentor)},status: :ok
     else
       render json: {status: 'ERROR', message:'mentor not updated', data:@mentor.errors},status: :unprocessable_entity
     end
