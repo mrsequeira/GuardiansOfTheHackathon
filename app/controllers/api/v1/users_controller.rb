@@ -66,9 +66,9 @@ module Api
       param_group :users
       def update
         if @user.update(user_params)
-          render json: @user
+          render json: {status: 'Sucess', message:'Saved user', data:api_v1_team_theme_url(@user)},status: :ok
         else
-          render json: @user.errors, status: :unprocessable_entity
+          render json: {status: 'Error', message:'User not saved', data:@user.errors},status: :unprocessable_entity
         end
       end
 
@@ -92,7 +92,7 @@ module Api
         end
 
         def user_params
-          params.permit(:user_id,:email, :password)
+          params.require(:users).permit(:email, :password, :email_confirmed)
         end
     end
   end
