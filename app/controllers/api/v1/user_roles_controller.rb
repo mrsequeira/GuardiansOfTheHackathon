@@ -21,7 +21,7 @@ module Api
         deprecated false
       end
     
-      def_param_group :user_roles do
+      def_param_group :user_role do
         param :id, Integer, :desc => "user_roles ID"
         param :role_id, Integer, :desc => "Role id PK and FK"
         param :user_id, Integer, :desc => "User id PF and Fk"
@@ -30,7 +30,7 @@ module Api
 
       # GET /user_roles
       api :GET, '/api/v1/user_roles' , 'Get all user_Roles'
-      param_group :user_roles
+      param_group :user_role
       def index
         @user_roles = UserRole.all
 
@@ -39,19 +39,19 @@ module Api
 
       # GET /user_roles/1
       api :GET, '/api/v1/user_roles/:id' , 'Get a single user_Roles'
-      param_group :user_roles
+      param_group :user_role
       def show
         render json: @user_role
       end
 
       # POST /user_roles
       api :POST, '/api/v1/user_roles' , 'Create a new user_roles'
-      param_group :user_roles
+      param_group :user_role
       def create
         @user_role = UserRole.new(user_role_params)
 
         if @user_role.save
-          render json: @user_role, status: :created, location: @user_role
+          render json: @user_role, status: :created, location: api_v1_user_role_url(@user_role)
         else
           render json: @user_role.errors, status: :unprocessable_entity
         end
@@ -59,7 +59,7 @@ module Api
 
       # PATCH/PUT /user_roles/1
       api :PUT, '/api/v1/user_roles/:id' , 'Update a user_Roles'
-      param_group :user_roles
+      param_group :user_role
       def update
         if @user_role.update(user_role_params)
           render json: @user_role
@@ -70,7 +70,7 @@ module Api
 
       # DELETE /user_roles/1
       api :DELETE, '/api/v1/user_roles/:id' , 'Delete a user_Roles'
-      param_group :user_roles
+      param_group :user_role
       def destroy
         @user_role.destroy
 
@@ -86,7 +86,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def user_role_params
-          params.permit(:user_id,:role_id)
+          params.require(:user_role).permit(:user_id,:role_id)
         end
     end
   end
