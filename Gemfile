@@ -29,7 +29,7 @@ gem 'apipie-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+gem 'rack-cors', '>= 1.0.5'
 
 # coverage gem
 gem 'simplecov', require: false, group: :test
