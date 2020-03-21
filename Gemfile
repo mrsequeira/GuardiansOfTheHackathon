@@ -7,7 +7,7 @@ gem 'jwt'
 gem 'rails-erd'
 gem 'simple_command'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'apipie-rails'
+gem 'apipie-rails', '>= 0.5.15'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 
 # coverage gem
-gem 'simplecov', require: false, group: :test
+gem 'simplecov', '>= 0.16.1', require: false, group: :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
