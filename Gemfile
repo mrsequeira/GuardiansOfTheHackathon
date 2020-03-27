@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 
 # coverage gem
-gem 'simplecov', require: false, group: :test
+gem 'simplecov', '>= 0.16.1', require: false, group: :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
